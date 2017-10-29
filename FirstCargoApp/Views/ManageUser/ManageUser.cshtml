@@ -1,0 +1,27 @@
+﻿@model FirstCargoApp.Models.USER
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = @ViewResources.Resource.ManageAccount;
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="row">
+    <div class="col-md-12">
+       
+            @Html.Partial("_ChangePasswordPartial")
+        
+        
+        <section id="externalLogins">
+            
+                @Html.ActionLink("User List" + " " + "!", "Index", "ManageUser", routeValues: null, htmlAttributes: new { title = "Verwalten" })
+           
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

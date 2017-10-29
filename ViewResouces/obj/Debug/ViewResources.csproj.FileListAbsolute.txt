@@ -1,0 +1,59 @@
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.dll
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.pdb
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.dll
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.pdb
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\bin\Debug\hi\ViewResources.resources.dll
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.resources
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.hi.resources
+c:\users\shailendra chauhan\documents\visual studio 2013\Projects\MultiLanguageValidation\ViewResouces\obj\Debug\hi\ViewResources.resources.dll
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.dll
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.pdb
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\hi\ViewResources.resources.dll
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.resources
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.hi.resources
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\hi\ViewResources.resources.dll
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.dll
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.pdb
+F:\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.dll
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\ViewResources.pdb
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\bin\Debug\hi\ViewResources.resources.dll
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.resources
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.Resource.hi.resources
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\hi\ViewResources.resources.dll
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.dll
+C:\Training\Asp.Net MVC Training\Asp.Net MVC\MultiLanguageValidation\ViewResouces\obj\Debug\ViewResources.pdb
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\bin\Debug\ViewResources.dll
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\bin\Debug\ViewResources.pdb
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\bin\Debug\hi\ViewResources.resources.dll
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.Resource.resources
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.Resource.hi.resources
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\hi\ViewResources.resources.dll
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.dll
+C:\Users\Shailendra Chauhan\Desktop\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\bin\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\bin\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\bin\Debug\hi\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.Resource.resources
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.Resource.hi.resources
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\hi\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\Downloads\MVC-Internationalization\MVC-Internationalization\ViewResouces\obj\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\bin\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\bin\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\bin\Debug\de\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.Resource.resources
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.Resource.de.resources
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\de\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache

@@ -1,0 +1,153 @@
+﻿@model FirstCargoApp.Models.VEHICULES
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Vehicule", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>VEHICULES</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vehiculeType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vehiculeType)
+                @Html.ValidationMessageFor(model => model.vehiculeType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.frameNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.frameNumber)
+                @Html.ValidationMessageFor(model => model.frameNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.senderName)
+                @Html.ValidationMessageFor(model => model.senderName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderAdress, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.senderAdress)
+                @Html.ValidationMessageFor(model => model.senderAdress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderPhoneNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.senderPhoneNumber)
+                @Html.ValidationMessageFor(model => model.senderPhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.recieverName)
+                @Html.ValidationMessageFor(model => model.recieverName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverAdress, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.recieverAdress)
+                @Html.ValidationMessageFor(model => model.recieverAdress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverPhoneNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.recieverPhoneNumber)
+                @Html.ValidationMessageFor(model => model.recieverPhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.length, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.length)
+                @Html.ValidationMessageFor(model => model.length)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.height, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.height)
+                @Html.ValidationMessageFor(model => model.height)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.depth, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.depth)
+                @Html.ValidationMessageFor(model => model.depth)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.destination, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.destination)
+                @Html.ValidationMessageFor(model => model.destination)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contentDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contentDescription)
+                @Html.ValidationMessageFor(model => model.contentDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paid)
+                @Html.ValidationMessageFor(model => model.paid)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.categoryID, "categoryID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("categoryID", String.Empty)
+                @Html.ValidationMessageFor(model => model.categoryID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

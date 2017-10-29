@@ -1,0 +1,42 @@
+﻿@model FirstCargoApp.Models.VEHICULES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VEHICULES</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vehiculeType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehiculeType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frameNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frameNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIES.categoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vehiculeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

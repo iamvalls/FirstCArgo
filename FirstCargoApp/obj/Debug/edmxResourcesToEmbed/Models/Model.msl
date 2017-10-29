@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FirstCargoDbModelStoreContainer" CdmEntityContainer="FirstCargoDbEntities">
+    <EntitySetMapping Name="CATEGORIES">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.CATEGORIES">
+        <MappingFragment StoreEntitySet="CATEGORIES">
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="senderName" ColumnName="senderName" />
+          <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
+          <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
+          <ScalarProperty Name="recieverName" ColumnName="recieverName" />
+          <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
+          <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="depth" ColumnName="depth" />
+          <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OTHERS">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.OTHERS">
+        <MappingFragment StoreEntitySet="OTHERS">
+          <ScalarProperty Name="otherID" ColumnName="otherID" />
+          <ScalarProperty Name="otherType" ColumnName="otherType" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PACKAGES">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.PACKAGES">
+        <MappingFragment StoreEntitySet="PACKAGES">
+          <ScalarProperty Name="packageID" ColumnName="packageID" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="newPassword" ColumnName="newPassword" />
+          <ScalarProperty Name="confirmPassword" ColumnName="confirmPassword" />
+          <ScalarProperty Name="oldPassword" ColumnName="oldPassword" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+          <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="confirmationToken" ColumnName="confirmationToken" />
+          <ScalarProperty Name="isConfirmed" ColumnName="isConfirmed" />
+          <ScalarProperty Name="lastPasstWortFailuresDates" ColumnName="lastPasstWortFailuresDates" />
+          <ScalarProperty Name="passwordFailuresDateSinceLastSuccess" ColumnName="passwordFailuresDateSinceLastSuccess" />
+          <ScalarProperty Name="passwordChangedDates" ColumnName="passwordChangedDates" />
+          <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+          <ScalarProperty Name="passwordVerificationToken" ColumnName="passwordVerificationToken" />
+          <ScalarProperty Name="passwordVerificationTokenExprirationDate" ColumnName="passwordVerificationTokenExprirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEHICULES">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.VEHICULES">
+        <MappingFragment StoreEntitySet="VEHICULES">
+          <ScalarProperty Name="vehiculeID" ColumnName="vehiculeID" />
+          <ScalarProperty Name="vehiculeType" ColumnName="vehiculeType" />
+          <ScalarProperty Name="frameNumber" ColumnName="frameNumber" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Globalization
+@using System.Threading
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(@ViewResources.Resource.Welcome + " " + User.Identity.GetUserName().Split('|')[0] + "!", "ManageUser", "ManageUser", routeValues: null, htmlAttributes: new { title = @ViewResources.Resource.ManageAccount })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">@ViewResources.Resource.LogOff</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li id="language">
+            @{
+
+    using (Html.BeginForm("ChangeCulture", "Home"))
+    {
+
+        @Html.DropDownList("ddlCulture", new SelectList(new[]
+                                          {
+                                              new{value="de",text=ViewResources.Resource.German},
+                                              new{value="en",text=ViewResources.Resource.English}
+
+                                          }, "value", "text", Session["CurrentCulture"]), new { onchange = "this.form.submit();" })
+
+    }
+            }
+        </li>
+
+    </ul>
+}

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FirstCargoDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORIES">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryName" Type="varchar" MaxLength="255" />
+    <Property Name="senderName" Type="varchar" MaxLength="255" />
+    <Property Name="senderAdress" Type="varchar" MaxLength="255" />
+    <Property Name="senderPhoneNumber" Type="varchar" MaxLength="22" />
+    <Property Name="recieverName" Type="varchar" MaxLength="255" />
+    <Property Name="recieverAdress" Type="varchar" MaxLength="255" />
+    <Property Name="recieverPhoneNumber" Type="varchar" MaxLength="22" />
+    <Property Name="destination" Type="varchar" MaxLength="255" />
+    <Property Name="price" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="paid" Type="bit" Nullable="false" />
+    <Property Name="weight" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="height" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="length" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="depth" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="contentDescription" Type="varchar" MaxLength="255" />
+    <Property Name="userID" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OTHERS">
+    <Key>
+      <PropertyRef Name="otherID" />
+    </Key>
+    <Property Name="otherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="otherType" Type="varchar" MaxLength="255" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="PACKAGES">
+    <Key>
+      <PropertyRef Name="packageID" />
+    </Key>
+    <Property Name="packageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="255" />
+    <Property Name="userFirstName" Type="varchar" MaxLength="255" />
+    <Property Name="userLastName" Type="varchar" MaxLength="255" />
+    <Property Name="dateOfBirth" Type="datetime" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="isAdmin" Type="bit" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" />
+    <Property Name="confirmationToken" Type="varchar" MaxLength="255" />
+    <Property Name="isConfirmed" Type="bit" Nullable="false" />
+    <Property Name="lastPasstWortFailuresDates" Type="datetime" />
+    <Property Name="passwordFailuresDateSinceLastSuccess" Type="datetime" />
+    <Property Name="passwordChangedDates" Type="datetime" />
+    <Property Name="passwordSalt" Type="varchar" MaxLength="255" />
+    <Property Name="passwordVerificationToken" Type="varchar" MaxLength="255" />
+    <Property Name="passwordVerificationTokenExprirationDate" Type="datetime" />
+    <Property Name="oldPassword" Type="varchar" MaxLength="255" />
+    <Property Name="confirmPassword" Type="varchar" MaxLength="255" />
+    <Property Name="newPassword" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="VEHICULES">
+    <Key>
+      <PropertyRef Name="vehiculeID" />
+    </Key>
+    <Property Name="vehiculeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vehiculeType" Type="varchar" MaxLength="255" />
+    <Property Name="frameNumber" Type="varchar" MaxLength="255" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <Association Name="FK_CategoryOther">
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OTHERS" Type="Self.OTHERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIES">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="OTHERS">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryPackage">
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PACKAGES" Type="Self.PACKAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIES">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="PACKAGES">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryVehicule">
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VEHICULES" Type="Self.VEHICULES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIES">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="VEHICULES">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FirstCargoDbModelStoreContainer">
+    <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTHERS" EntityType="Self.OTHERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PACKAGES" EntityType="Self.PACKAGES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VEHICULES" EntityType="Self.VEHICULES" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CategoryOther" Association="Self.FK_CategoryOther">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="OTHERS" EntitySet="OTHERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryPackage" Association="Self.FK_CategoryPackage">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="PACKAGES" EntitySet="PACKAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryVehicule" Association="Self.FK_CategoryVehicule">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="VEHICULES" EntitySet="VEHICULES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
