@@ -1,18 +1,60 @@
-﻿@model IEnumerable<FirstCargoApp.Models.PACKAGES>
+﻿@model IEnumerable<FirstCargoApp.Models.Package>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @ViewResources.Resource.PackageRecords;
 }
 
-<h2>Index</h2>
+<h2>@ViewResources.Resource.PackageRecords</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@ViewResources.Resource.CreateNewRecords, "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
+            @Html.DisplayNameFor(model => model.packageType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senderAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senderPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.depth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contentDescription)
         </th>
         <th></th>
     </tr>
@@ -20,12 +62,54 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CATEGORIES.categoryName)
+            @Html.DisplayFor(modelItem => item.packageType)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.packageID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.packageID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.packageID })
+            @Html.DisplayFor(modelItem => item.senderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senderAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senderPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.depth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contentDescription)
+        </td>
+        <td>
+            @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id=item.packageID }) |
+            @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id=item.packageID }) |
+            @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id=item.packageID })
         </td>
     </tr>
 }

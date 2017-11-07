@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,31 +16,29 @@ namespace FirstCargoApp.Controllers
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
 
         // GET: /Vehicule/
-        public ActionResult Vehicule()
+        public async Task<ActionResult> Index()
         {
-            var vehicules = db.VEHICULES.Include(v => v.CATEGORIES);
-            return View(vehicules.ToList());
+            return View(await db.Vehicule.ToListAsync());
         }
 
         // GET: /Vehicule/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VEHICULES vehicules = db.VEHICULES.Find(id);
-            if (vehicules == null)
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            if (vehicule == null)
             {
                 return HttpNotFound();
             }
-            return View(vehicules);
+            return View(vehicule);
         }
 
         // GET: /Vehicule/Create
         public ActionResult Create()
         {
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName");
             return View();
         }
 
@@ -48,33 +47,31 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="vehiculeID,vehiculeType,frameNumber,categoryID")] VEHICULES vehicules)
+        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             if (ModelState.IsValid)
             {
-                db.VEHICULES.Add(vehicules);
-                db.SaveChanges();
-                return RedirectToAction("Vehicule","Vehicule");
+                db.Vehicule.Add(vehicule);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
 
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", vehicules.categoryID);
-            return View(vehicules);
+            return View(vehicule);
         }
 
         // GET: /Vehicule/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VEHICULES vehicules = db.VEHICULES.Find(id);
-            if (vehicules == null)
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            if (vehicule == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", vehicules.categoryID);
-            return View(vehicules);
+            return View(vehicule);
         }
 
         // POST: /Vehicule/Edit/5
@@ -82,42 +79,41 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="vehiculeID,vehiculeType,frameNumber,categoryID")] VEHICULES vehicules)
+        public async Task<ActionResult> Edit([Bind(Include="vehiculeID,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vehicules).State = EntityState.Modified;
-                db.SaveChanges();
+                db.Entry(vehicule).State = EntityState.Modified;
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", vehicules.categoryID);
-            return View(vehicules);
+            return View(vehicule);
         }
 
         // GET: /Vehicule/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VEHICULES vehicules = db.VEHICULES.Find(id);
-            if (vehicules == null)
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            if (vehicule == null)
             {
                 return HttpNotFound();
             }
-            return View(vehicules);
+            return View(vehicule);
         }
 
         // POST: /Vehicule/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            VEHICULES vehicules = db.VEHICULES.Find(id);
-            db.VEHICULES.Remove(vehicules);
-            db.SaveChanges();
-            return RedirectToAction("Vehicule","Vehicule");
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            db.Vehicule.Remove(vehicule);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

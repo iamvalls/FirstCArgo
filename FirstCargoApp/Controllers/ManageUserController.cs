@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using FirstCargoApp.Models;
+using FirstCargoApp.Helper;
 
 namespace FirstCargoApp.Controllers
 {
@@ -46,8 +47,8 @@ namespace FirstCargoApp.Controllers
             return View();
         }
 
-        //
-        // POST: /ManageUser/ManageUser
+        // This method change the Password of a Logged User
+        // POST: /ManageUser/ManageUser 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ManageUser(USER user)
@@ -55,10 +56,13 @@ namespace FirstCargoApp.Controllers
             //Todo
             //bool hasPassword = HasPassword(); // le mot de passe na#est pas encore crypeter 
             //ViewBag.HasLocalPassword = hasPassword;
-            bool hasPassword = true;
+            bool hasPassword = true; // apres avoir hasher le ot de pase effacer cette ligne
             ViewBag.ReturnUrl = Url.Action("ManageUser");
+
+
             if (hasPassword)
             {
+                // Remove the useles data column because we dont#t need them to Change the password
                 ModelState.Remove("password");
                 ModelState.Remove("userName");
                 ModelState.Remove("userID");
@@ -71,21 +75,18 @@ namespace FirstCargoApp.Controllers
     //.Select(x => new { x.Key, x.Value.Errors })
     //.ToArray();
 
-
-                
-
-                //ModelState.Remove("newPassword");
                 if (ModelState.IsValid)
                 {
-                    
+                    // Set obligated User Property before updated the changes 
                     user.password = user.newPassword;
-                    user.userName = User.Identity.Name;
+                    user.userName = Int32.Parse(User.Identity.GetUserName().Split('|')[0]).ToString();
+                    user.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+
                     if (user.email != null) // Just for test
                         user.email = user.email;
                     else
                         user.email = "elievalls@yahoo.fr";
                         
-                    user.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                     db.Entry(user).State = EntityState.Modified;
                     try
                     {
@@ -93,62 +94,23 @@ namespace FirstCargoApp.Controllers
                     }
                     catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
                     {
-                        Exception raise = dbEx;
-                        foreach (var validationErrors in dbEx.EntityValidationErrors)
-                        {
-                            foreach (var validationError in validationErrors.ValidationErrors)
-                            {
-                                string message = string.Format("{0}:{1}",
-                                    validationErrors.Entry.Entity.ToString(),
-                                    validationError.ErrorMessage);
-                                // raise a new exception nesting
-                                // the current instance as InnerException
-                                raise = new InvalidOperationException(message, raise);
-                            }
-                        }
-                        throw raise;
+                        // Todo Log the error
                     }
-                    
 
-                    
                     return RedirectToAction("ManageUser", new { Message = ManageMessageId.ChangePasswordSuccess });
-            
                 }
             }
-           // Wurde dieser Punkt erreicht, ist ein Fehler aufgetreten; Formular erneut anzeigen.
+           // how form again if there is a failure
             return View(user);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // GET: /ManageUser/
+        // GET: /ManageUser/ Show the list of User
         public async Task<ActionResult> Index()
         {
             return View(await db.USER.ToListAsync());
         }
 
-        // GET: /ManageUser/Details/5
+        // GET: /ManageUser/ Show user Details
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -176,27 +138,43 @@ namespace FirstCargoApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include="userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,email")] USER user)
         {
+            // Remove the useles data column because we dont#t need them to Change the password
             ModelState.Remove("oldPassword");
             ModelState.Remove("confirmPassword");
             ModelState.Remove("newPassword");
+
                         var errors3 = ModelState
             .Where(x => x.Value.Errors.Count > 0)
             .Select(x => new { x.Key, x.Value.Errors })
-            .ToArray();
+            .ToArray(); // This has to be remove later
+
             if (ModelState.IsValid)
             {
-                //because they donot appear to the view we need to initiliaze them 
-                user.oldPassword = user.password;
-                user.newPassword = user.password;
-                user.confirmPassword = user.password;
-                user.createdDate = DateTime.Now;
-                user.confirmationToken = "";
-                user.isConfirmed = false;
-                db.USER.Add(user);
-                try{
-                await db.SaveChangesAsync();
-            }catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-                    {
+                try
+                {
+
+                    var chkUser = (from s in db.USER where s.userName == user.userName || s.email == user.email select s).FirstOrDefault();
+                if (chkUser == null)
+                {
+                    var keyNew = RegistrationLoginHelper.GeneratePassword(10);
+                    var password = RegistrationLoginHelper.EncodePassword(user.password, keyNew);
+                    user.password = password;
+                    user.createdDate = DateTime.Now;
+                    user.vCode = keyNew;
+                    //because they donot appear to the view we need to initiliaze them 
+                    // Set obligated User Property before updated the changes 
+                    user.oldPassword = user.password;
+                    user.newPassword = user.password;
+                    user.confirmPassword = user.password;
+                    user.createdDate = DateTime.Now;
+                    user.confirmationToken = "";
+                    user.isConfirmed = false;
+                    db.USER.Add(user);
+                    await db.SaveChangesAsync();
+                    //return RedirectToAction("LogIn", "Login");
+                }
+                ViewBag.ErrorMessage = "User Allredy Exixts!!!!!!!!!!"; 
+}catch (System.Data.Entity.Validation.DbEntityValidationException dbEx){
                         Exception raise = dbEx;
                         foreach (var validationErrors in dbEx.EntityValidationErrors)
                         {
@@ -211,6 +189,8 @@ namespace FirstCargoApp.Controllers
                             }
                         }
                         throw raise;
+
+                        //Todo Log the exception
                     }
                 
                 return RedirectToAction("Index","ManageUser");
@@ -219,7 +199,7 @@ namespace FirstCargoApp.Controllers
             return View(user);
         }
 
-        // GET: /ManageUser/Edit/5
+        // GET: /ManageUser/Edit/5 
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -227,6 +207,8 @@ namespace FirstCargoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             USER user = await db.USER.FindAsync(id);
+
+            String.Format("{0:d/M/yyyy HH:mm:ss}", user.createdDate);
             if (user == null)
             {
                 return HttpNotFound();
@@ -234,17 +216,48 @@ namespace FirstCargoApp.Controllers
             return View(user);
         }
 
-        // POST: /ManageUser/Edit/5
+        // POST: /ManageUser/Edit/5 user 
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include="userID,userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,createdDate,confirmationToken,isConfirmed,lastPasstWortFailuresDates,passwordFailuresDateSinceLastSuccess,passwordChangedDates,passwordSalt,passwordVerificationToken,passwordVerificationTokenExprirationDate")] USER user)
         {
+            // Remove the useles data column because we dont#t need them to edit the User. They dont apear on the view
+            ModelState.Remove("confirmPassword");
+            ModelState.Remove("newPassword");
+            ModelState.Remove("passwordVerificationTokenExprirationDate");
+            ModelState.Remove("passwordVerificationToken");
+            ModelState.Remove("passwordSalt");
+            ModelState.Remove("passwordFailuresDateSinceLastSuccess");
+            ModelState.Remove("passwordFailuresDateSinceLastSuccess");
+            ModelState.Remove("confirmationToken");
+            ModelState.Remove("passwordFailuresDateSinceLastSuccess");
+            ModelState.Remove("email");
+
             if (ModelState.IsValid)
             {
+                //because they do not appear to the view we need to initiliaze them 
+                user.oldPassword = user.password;
+                user.newPassword = user.password;
+                user.confirmPassword = user.password;
+                user.createdDate = DateTime.Now;
+                user.email = user.email;
+                user.confirmationToken = "";
+                user.isConfirmed = false;
+
                 db.Entry(user).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+
+                    //Todo Log exception
+                }
+                
                 return RedirectToAction("Index", "ManageUser");
             }
             return View(user);
@@ -272,11 +285,21 @@ namespace FirstCargoApp.Controllers
         {
             USER user = await db.USER.FindAsync(id);
             db.USER.Remove(user);
-            await db.SaveChangesAsync();
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+
+                //Todo Log exception
+            }
+            
             return RedirectToAction("Index", "ManageUser");
         }
 
-
+        
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());

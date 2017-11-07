@@ -11,112 +11,107 @@ using FirstCargoApp.Models;
 
 namespace FirstCargoApp.Controllers
 {
-    public class OrtherController : Controller
+    public class OtherController : Controller
     {
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
 
-        // GET: /Orther/
+        // GET: /Other/
         public async Task<ActionResult> Index()
         {
-            var others = db.OTHERS.Include(o => o.CATEGORIES);
-            return View(await others.ToListAsync());
+            return View(await db.Other.ToListAsync());
         }
 
-        // GET: /Orther/Details/5
+        // GET: /Other/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OTHERS others = await db.OTHERS.FindAsync(id);
-            if (others == null)
+            Other other = await db.Other.FindAsync(id);
+            if (other == null)
             {
                 return HttpNotFound();
             }
-            return View(others);
+            return View(other);
         }
 
-        // GET: /Orther/Create
+        // GET: /Other/Create
         public ActionResult Create()
         {
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName");
             return View();
         }
 
-        // POST: /Orther/Create
+        // POST: /Other/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="otherID,otherType,categoryID")] OTHERS others)
+        public async Task<ActionResult> Create([Bind(Include="otherID,otherType,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Other other)
         {
             if (ModelState.IsValid)
             {
-                db.OTHERS.Add(others);
+                db.Other.Add(other);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", others.categoryID);
-            return View(others);
+            return View(other);
         }
 
-        // GET: /Orther/Edit/5
+        // GET: /Other/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OTHERS others = await db.OTHERS.FindAsync(id);
-            if (others == null)
+            Other other = await db.Other.FindAsync(id);
+            if (other == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", others.categoryID);
-            return View(others);
+            return View(other);
         }
 
-        // POST: /Orther/Edit/5
+        // POST: /Other/Edit/5
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="otherID,otherType,categoryID")] OTHERS others)
+        public async Task<ActionResult> Edit([Bind(Include="otherID,otherType,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Other other)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(others).State = EntityState.Modified;
+                db.Entry(other).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", others.categoryID);
-            return View(others);
+            return View(other);
         }
 
-        // GET: /Orther/Delete/5
+        // GET: /Other/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OTHERS others = await db.OTHERS.FindAsync(id);
-            if (others == null)
+            Other other = await db.Other.FindAsync(id);
+            if (other == null)
             {
                 return HttpNotFound();
             }
-            return View(others);
+            return View(other);
         }
 
-        // POST: /Orther/Delete/5
+        // POST: /Other/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            OTHERS others = await db.OTHERS.FindAsync(id);
-            db.OTHERS.Remove(others);
+            Other other = await db.Other.FindAsync(id);
+            db.Other.Remove(other);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

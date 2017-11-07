@@ -21,26 +21,9 @@
     <Property Name="depth" Type="Decimal" Precision="9" Scale="2" />
     <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="userID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="OTHERS" Relationship="Self.FK_CategoryOther" FromRole="CATEGORIES" ToRole="OTHERS" />
-    <NavigationProperty Name="VEHICULES" Relationship="Self.FK_CategoryVehicule" FromRole="CATEGORIES" ToRole="VEHICULES" />
+    <NavigationProperty Name="OTHERS" Relationship="FirstCargoDbModel.FK_CategoryOther" FromRole="CATEGORIES" ToRole="OTHERS" />
     <NavigationProperty Name="PACKAGES" Relationship="FirstCargoDbModel.FK_CategoryPackage" FromRole="CATEGORIES" ToRole="PACKAGES" />
-  </EntityType>
-  <EntityType Name="OTHERS">
-    <Key>
-      <PropertyRef Name="otherID" />
-    </Key>
-    <Property Name="otherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="otherType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="categoryID" Type="Int32" />
-    <NavigationProperty Name="CATEGORIES" Relationship="Self.FK_CategoryOther" FromRole="OTHERS" ToRole="CATEGORIES" />
-  </EntityType>
-  <EntityType Name="PACKAGES">
-    <Key>
-      <PropertyRef Name="packageID" />
-    </Key>
-    <Property Name="packageID" Type="Int32" Nullable="false" />
-    <Property Name="categoryID" Type="Int32" />
-    <NavigationProperty Name="CATEGORIES" Relationship="FirstCargoDbModel.FK_CategoryPackage" FromRole="PACKAGES" ToRole="CATEGORIES" />
+    <NavigationProperty Name="VEHICULES" Relationship="FirstCargoDbModel.FK_CategoryVehicule" FromRole="CATEGORIES" ToRole="VEHICULES" />
   </EntityType>
   <EntityType Name="USER">
     <Key>
@@ -67,21 +50,36 @@
     <Property Name="newPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="VEHICULES">
+  <EntityContainer Name="FirstCargoDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" />
+    <EntitySet Name="USER" EntityType="Self.USER" />
+    <EntitySet Name="OTHERS" EntityType="FirstCargoDbModel.OTHERS" />
+    <AssociationSet Name="FK_CategoryOther" Association="FirstCargoDbModel.FK_CategoryOther">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="OTHERS" EntitySet="OTHERS" />
+    </AssociationSet>
+    <EntitySet Name="PACKAGES" EntityType="FirstCargoDbModel.PACKAGES" />
+    <EntitySet Name="VEHICULES" EntityType="FirstCargoDbModel.VEHICULES" />
+    <AssociationSet Name="FK_CategoryPackage" Association="FirstCargoDbModel.FK_CategoryPackage">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="PACKAGES" EntitySet="PACKAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryVehicule" Association="FirstCargoDbModel.FK_CategoryVehicule">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="VEHICULES" EntitySet="VEHICULES" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="OTHERS">
     <Key>
-      <PropertyRef Name="vehiculeID" />
+      <PropertyRef Name="categoryID" />
     </Key>
-    <Property Name="vehiculeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="vehiculeType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="frameNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="categoryID" Type="Int32" />
-    <NavigationProperty Name="CATEGORIES" Relationship="Self.FK_CategoryVehicule" FromRole="VEHICULES" ToRole="CATEGORIES" />
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="otherType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEGORIES" Relationship="FirstCargoDbModel.FK_CategoryOther" FromRole="OTHERS" ToRole="CATEGORIES" />
   </EntityType>
   <Association Name="FK_CategoryOther">
-    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="OTHERS" Type="Self.OTHERS" Multiplicity="*" />
+    <End Type="FirstCargoDbModel.CATEGORIES" Role="CATEGORIES" Multiplicity="1" />
+    <End Type="FirstCargoDbModel.OTHERS" Role="OTHERS" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CATEGORIES">
         <PropertyRef Name="categoryID" />
@@ -91,49 +89,43 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CategoryVehicule">
-    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="VEHICULES" Type="Self.VEHICULES" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CATEGORIES">
-        <PropertyRef Name="categoryID" />
-      </Principal>
-      <Dependent Role="VEHICULES">
-        <PropertyRef Name="categoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="FirstCargoDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" />
-    <EntitySet Name="OTHERS" EntityType="Self.OTHERS" />
-    <EntitySet Name="PACKAGES" EntityType="Self.PACKAGES" />
-    <EntitySet Name="USER" EntityType="Self.USER" />
-    <EntitySet Name="VEHICULES" EntityType="Self.VEHICULES" />
-    <AssociationSet Name="FK_CategoryOther" Association="Self.FK_CategoryOther">
-      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
-      <End Role="OTHERS" EntitySet="OTHERS" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CategoryVehicule" Association="Self.FK_CategoryVehicule">
-      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
-      <End Role="VEHICULES" EntitySet="VEHICULES" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CategoryPackage" Association="FirstCargoDbModel.FK_CategoryPackage">
-      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
-      <End Role="PACKAGES" EntitySet="PACKAGES" />
-    </AssociationSet>
-  </EntityContainer>
+  <EntityType Name="PACKAGES">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEGORIES" Relationship="FirstCargoDbModel.FK_CategoryPackage" FromRole="PACKAGES" ToRole="CATEGORIES" />
+  </EntityType>
+  <EntityType Name="VEHICULES">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vehiculeType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="frameNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEGORIES" Relationship="FirstCargoDbModel.FK_CategoryVehicule" FromRole="VEHICULES" ToRole="CATEGORIES" />
+  </EntityType>
   <Association Name="FK_CategoryPackage">
-    <End Type="FirstCargoDbModel.CATEGORIES" Role="CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="FirstCargoDbModel.PACKAGES" Role="PACKAGES" Multiplicity="*" />
+    <End Type="FirstCargoDbModel.CATEGORIES" Role="CATEGORIES" Multiplicity="1" />
+    <End Type="FirstCargoDbModel.PACKAGES" Role="PACKAGES" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CATEGORIES">
         <PropertyRef Name="categoryID" />
       </Principal>
       <Dependent Role="PACKAGES">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryVehicule">
+    <End Type="FirstCargoDbModel.CATEGORIES" Role="CATEGORIES" Multiplicity="1" />
+    <End Type="FirstCargoDbModel.VEHICULES" Role="VEHICULES" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIES">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="VEHICULES">
         <PropertyRef Name="categoryID" />
       </Dependent>
     </ReferentialConstraint>

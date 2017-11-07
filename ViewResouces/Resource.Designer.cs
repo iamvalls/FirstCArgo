@@ -79,6 +79,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back to List ähnelt.
+        /// </summary>
+        public static string BacktoList {
+            get {
+                return ResourceManager.GetString("BacktoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Change Password ähnelt.
         /// </summary>
         public static string ChangePassword {
@@ -115,11 +124,38 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ContentDescription ähnelt.
+        /// </summary>
+        public static string ContentDescription {
+            get {
+                return ResourceManager.GetString("ContentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create ähnelt.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Date of Creation ähnelt.
         /// </summary>
         public static string CreatedDate {
             get {
                 return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create New Record ähnelt.
+        /// </summary>
+        public static string CreateNewRecords {
+            get {
+                return ResourceManager.GetString("CreateNewRecords", resourceCulture);
             }
         }
         
@@ -133,11 +169,74 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete ähnelt.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Are you sure you want to delete this? ähnelt.
+        /// </summary>
+        public static string deleteConfirmation {
+            get {
+                return ResourceManager.GetString("deleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Depth ähnelt.
+        /// </summary>
+        public static string Depth {
+            get {
+                return ResourceManager.GetString("Depth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Destination ähnelt.
+        /// </summary>
+        public static string Destination {
+            get {
+                return ResourceManager.GetString("Destination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Details ähnelt.
+        /// </summary>
+        public static string Detail {
+            get {
+                return ResourceManager.GetString("Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit ähnelt.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Email ähnelt.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Invalid Email Address ähnelt.
+        /// </summary>
+        public static string EmailAddressRequired {
+            get {
+                return ResourceManager.GetString("EmailAddressRequired", resourceCulture);
             }
         }
         
@@ -160,11 +259,38 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frame Number ähnelt.
+        /// </summary>
+        public static string FrameNumber {
+            get {
+                return ResourceManager.GetString("FrameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please Enter the Frame Number ähnelt.
+        /// </summary>
+        public static string FrameNumberRequired {
+            get {
+                return ResourceManager.GetString("FrameNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die German ähnelt.
         /// </summary>
         public static string German {
             get {
                 return ResourceManager.GetString("German", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Heigth ähnelt.
+        /// </summary>
+        public static string Heigth {
+            get {
+                return ResourceManager.GetString("Heigth", resourceCulture);
             }
         }
         
@@ -183,6 +309,15 @@ namespace ViewResources {
         public static string IsConfirmed {
             get {
                 return ResourceManager.GetString("IsConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Length ähnelt.
+        /// </summary>
+        public static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
             }
         }
         
@@ -277,6 +412,51 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Other ähnelt.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Other Records ähnelt.
+        /// </summary>
+        public static string OtherRecords {
+            get {
+                return ResourceManager.GetString("OtherRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Package ähnelt.
+        /// </summary>
+        public static string Package {
+            get {
+                return ResourceManager.GetString("Package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Package Records ähnelt.
+        /// </summary>
+        public static string PackageRecords {
+            get {
+                return ResourceManager.GetString("PackageRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Paid ähnelt.
+        /// </summary>
+        public static string Paid {
+            get {
+                return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Password ähnelt.
         /// </summary>
         public static string Password {
@@ -304,6 +484,42 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Price ähnelt.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Address ähnelt.
+        /// </summary>
+        public static string RecieverAddress {
+            get {
+                return ResourceManager.GetString("RecieverAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Name ähnelt.
+        /// </summary>
+        public static string RecieverName {
+            get {
+                return ResourceManager.GetString("RecieverName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Phone Number ähnelt.
+        /// </summary>
+        public static string RecieverPhoneNumber {
+            get {
+                return ResourceManager.GetString("RecieverPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
         /// </summary>
         public static string Save {
@@ -322,11 +538,38 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sender Address ähnelt.
+        /// </summary>
+        public static string SenderAddress {
+            get {
+                return ResourceManager.GetString("SenderAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sender Name ähnelt.
         /// </summary>
         public static string SenderName {
             get {
                 return ResourceManager.GetString("SenderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please Enter the Name of the sender ähnelt.
+        /// </summary>
+        public static string SenderNameRequired {
+            get {
+                return ResourceManager.GetString("SenderNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sender Phone Number ähnelt.
+        /// </summary>
+        public static string SenderPhoneNumber {
+            get {
+                return ResourceManager.GetString("SenderPhoneNumber", resourceCulture);
             }
         }
         
@@ -378,6 +621,24 @@ namespace ViewResources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Vehicule ähnelt.
         /// </summary>
+        public static string Vehicule {
+            get {
+                return ResourceManager.GetString("Vehicule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vehicule Records ähnelt.
+        /// </summary>
+        public static string VehiculeRecords {
+            get {
+                return ResourceManager.GetString("VehiculeRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vehicule ähnelt.
+        /// </summary>
         public static string VehiculeTitle {
             get {
                 return ResourceManager.GetString("VehiculeTitle", resourceCulture);
@@ -390,6 +651,15 @@ namespace ViewResources {
         public static string VehiculeType {
             get {
                 return ResourceManager.GetString("VehiculeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Weigth ähnelt.
+        /// </summary>
+        public static string Weigth {
+            get {
+                return ResourceManager.GetString("Weigth", resourceCulture);
             }
         }
         

@@ -189,52 +189,50 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ManageUserController.cs" />
-    <Compile Include="Controllers\OrtherController.cs" />
-    <Compile Include="Controllers\PackageController.cs" />
-    <Compile Include="Controllers\VehiculeController.cs" />
-    <Compile Include="Models\CATEGORIES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OtherController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\VehiculeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LocalisationHelper.cs" />
-    <Compile Include="Models\Model.Context.cs">
+    <Compile Include="Helper\RegistrationLoginHelper.cs" />
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\VehiculeViewModel.cs" />
     <Compile Include="Models\LoginViewModels.cs" />
     <Compile Include="Models\ManageVehiculeViewModel.cs" />
-    <Compile Include="Models\OTHERS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Models\Other.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PACKAGES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Models\Package.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\USER.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VEHICULES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Models\Vehicule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -244,27 +242,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="ClassDiagram1.cd" />
     <Content Include="ClassDiagram2.cd" />
+    <Content Include="ClassDiagram3.cd" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -308,12 +307,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\VehiculeView.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Vehicule\Create.cshtml" />
-    <Content Include="Views\Vehicule\Delete.cshtml" />
-    <Content Include="Views\Vehicule\Details.cshtml" />
-    <Content Include="Views\Vehicule\Edit.cshtml" />
-    <Content Include="Views\Vehicule\Index.cshtml" />
-    <Content Include="Views\Vehicule\Vehicule.cshtml" />
     <Content Include="Views\ManageUser\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\ManageUser\ManageUser.cshtml" />
     <Content Include="Views\ManageUser\Create.cshtml" />
@@ -321,16 +314,21 @@
     <Content Include="Views\ManageUser\Details.cshtml" />
     <Content Include="Views\ManageUser\Edit.cshtml" />
     <Content Include="Views\ManageUser\Index.cshtml" />
+    <Content Include="Views\Vehicule\Create.cshtml" />
+    <Content Include="Views\Vehicule\Delete.cshtml" />
+    <Content Include="Views\Vehicule\Details.cshtml" />
+    <Content Include="Views\Vehicule\Edit.cshtml" />
+    <Content Include="Views\Vehicule\Index.cshtml" />
     <Content Include="Views\Package\Create.cshtml" />
     <Content Include="Views\Package\Delete.cshtml" />
     <Content Include="Views\Package\Details.cshtml" />
     <Content Include="Views\Package\Edit.cshtml" />
     <Content Include="Views\Package\Index.cshtml" />
-    <Content Include="Views\Orther\Create.cshtml" />
-    <Content Include="Views\Orther\Delete.cshtml" />
-    <Content Include="Views\Orther\Details.cshtml" />
-    <Content Include="Views\Orther\Edit.cshtml" />
-    <Content Include="Views\Orther\Index.cshtml" />
+    <Content Include="Views\Other\Create.cshtml" />
+    <Content Include="Views\Other\Delete.cshtml" />
+    <Content Include="Views\Other\Details.cshtml" />
+    <Content Include="Views\Other\Edit.cshtml" />
+    <Content Include="Views\Other\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

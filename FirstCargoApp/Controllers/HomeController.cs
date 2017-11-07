@@ -36,30 +36,33 @@ namespace FirstCargoApp.Controllers
             ModelState.Remove("oldPassword");
             ModelState.Remove("confirmPassword");
             ModelState.Remove("newPassword");
+            ModelState.Remove("email");
 
             // Lets first check if the Model is valid or not
             if (ModelState.IsValid)
             {
-                using (FirstCargoDbEntities entities = new FirstCargoDbEntities ())
+                using (FirstCargoDbEntities entities = new FirstCargoDbEntities())
                 {
                     string username = model.userName;
                     string password = model.password;
-
-                    // Now if our password was enctypted or hashed we would have done the
-                    // same operation on the user entered password here, But for now
-                    // since the password is in plain text lets just authenticate directly
-
-                    bool userValid = entities.USER.Any(user => user.userName == username && user.password == password);
+                    USER user = entities.USER.SingleOrDefault(u => u.userName == username);
+                    var hashCode = user.vCode;
+                    //Password Hasing Process Call Helper Class Method    
+                    var encodingPasswordString = RegistrationLoginHelper.EncodePassword(password, hashCode);
+                    //Check Login Detail User Name Or Password    
+                    var query = (from s in entities.USER where (s.userName == model.userName || s.email == model.userName) && s.password.Equals(encodingPasswordString) select s).FirstOrDefault();
 
                     // User found in the database
-                    if (userValid)
+                    if (query != null)
                     {
-                        USER user = entities.USER.SingleOrDefault(u => u.userName == username);
-                        FormsAuthentication.SetAuthCookie(username + "|" + user.userID.ToString(), false);
+  
+                        FormsAuthentication.SetAuthCookie(username + "|" + user.userID.ToString() + "|" + user.isAdmin, false);
                         int test = CurrentUserId;
                         string test2 = User.Identity.GetUserName().Split('|')[0];
                         string test3 = User.Identity.GetUserName();
-                            return RedirectToAction("Vehicule", "Vehicule");                  
+
+                            return RedirectToAction("Index", "Vehicule");
+                        
                         
                         //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))

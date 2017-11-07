@@ -1,15 +1,127 @@
-﻿@model FirstCargoApp.Models.VEHICULES
+﻿@model FirstCargoApp.Models.Vehicule
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @ViewResources.Resource.Detail;
 }
 
-<h2>Details</h2>
+<h2>@ViewResources.Resource.Detail</h2>
 
 <div>
-    <h4>VEHICULES</h4>
+    <h4>Vehicule</h4>
 	<hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.senderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senderAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senderPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.depth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.depth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contentDescription)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.vehiculeType)
         </dt>
@@ -26,17 +138,9 @@
             @Html.DisplayFor(model => model.frameNumber)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CATEGORIES.categoryName)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.vehiculeID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = Model.vehiculeID }) |
+    @Html.ActionLink(@ViewResources.Resource.BacktoList, "Index")
 </p>

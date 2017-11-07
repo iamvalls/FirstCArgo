@@ -18,8 +18,7 @@ namespace FirstCargoApp.Controllers
         // GET: /Package/
         public async Task<ActionResult> Index()
         {
-            var packages = db.PACKAGES.Include(p => p.CATEGORIES);
-            return View(await packages.ToListAsync());
+            return View(await db.Package.ToListAsync());
         }
 
         // GET: /Package/Details/5
@@ -29,18 +28,17 @@ namespace FirstCargoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PACKAGES packages = await db.PACKAGES.FindAsync(id);
-            if (packages == null)
+            Package package = await db.Package.FindAsync(id);
+            if (package == null)
             {
                 return HttpNotFound();
             }
-            return View(packages);
+            return View(package);
         }
 
         // GET: /Package/Create
         public ActionResult Create()
         {
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName");
             return View();
         }
 
@@ -49,17 +47,16 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="packageID,categoryID")] PACKAGES packages)
+        public async Task<ActionResult> Create([Bind(Include="packageID,packageType,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Package package)
         {
             if (ModelState.IsValid)
             {
-                db.PACKAGES.Add(packages);
+                db.Package.Add(package);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", packages.categoryID);
-            return View(packages);
+            return View(package);
         }
 
         // GET: /Package/Edit/5
@@ -69,13 +66,12 @@ namespace FirstCargoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PACKAGES packages = await db.PACKAGES.FindAsync(id);
-            if (packages == null)
+            Package package = await db.Package.FindAsync(id);
+            if (package == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", packages.categoryID);
-            return View(packages);
+            return View(package);
         }
 
         // POST: /Package/Edit/5
@@ -83,16 +79,15 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="packageID,categoryID")] PACKAGES packages)
+        public async Task<ActionResult> Edit([Bind(Include="packageID,packageType,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Package package)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(packages).State = EntityState.Modified;
+                db.Entry(package).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.categoryID = new SelectList(db.CATEGORIES, "categoryID", "categoryName", packages.categoryID);
-            return View(packages);
+            return View(package);
         }
 
         // GET: /Package/Delete/5
@@ -102,12 +97,12 @@ namespace FirstCargoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PACKAGES packages = await db.PACKAGES.FindAsync(id);
-            if (packages == null)
+            Package package = await db.Package.FindAsync(id);
+            if (package == null)
             {
                 return HttpNotFound();
             }
-            return View(packages);
+            return View(package);
         }
 
         // POST: /Package/Delete/5
@@ -115,8 +110,8 @@ namespace FirstCargoApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            PACKAGES packages = await db.PACKAGES.FindAsync(id);
-            db.PACKAGES.Remove(packages);
+            Package package = await db.Package.FindAsync(id);
+            db.Package.Remove(package);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

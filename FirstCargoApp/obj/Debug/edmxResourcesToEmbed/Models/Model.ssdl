@@ -24,18 +24,17 @@
   </EntityType>
   <EntityType Name="OTHERS">
     <Key>
-      <PropertyRef Name="otherID" />
+      <PropertyRef Name="categoryID" />
     </Key>
-    <Property Name="otherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="otherType" Type="varchar" MaxLength="255" />
-    <Property Name="categoryID" Type="int" />
   </EntityType>
   <EntityType Name="PACKAGES">
     <Key>
-      <PropertyRef Name="packageID" />
+      <PropertyRef Name="categoryID" />
     </Key>
-    <Property Name="packageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="categoryID" Type="int" />
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageType" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="USER">
     <Key>
@@ -64,18 +63,15 @@
   </EntityType>
   <EntityType Name="VEHICULES">
     <Key>
-      <PropertyRef Name="vehiculeID" />
+      <PropertyRef Name="categoryID" />
     </Key>
-    <Property Name="vehiculeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="vehiculeType" Type="varchar" MaxLength="255" />
     <Property Name="frameNumber" Type="varchar" MaxLength="255" />
-    <Property Name="categoryID" Type="int" />
   </EntityType>
   <Association Name="FK_CategoryOther">
-    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="OTHERS" Type="Self.OTHERS" Multiplicity="*" />
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+    <End Role="OTHERS" Type="Self.OTHERS" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CATEGORIES">
         <PropertyRef Name="categoryID" />
@@ -86,10 +82,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CategoryPackage">
-    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PACKAGES" Type="Self.PACKAGES" Multiplicity="*" />
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+    <End Role="PACKAGES" Type="Self.PACKAGES" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CATEGORIES">
         <PropertyRef Name="categoryID" />
@@ -100,10 +94,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CategoryVehicule">
-    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="VEHICULES" Type="Self.VEHICULES" Multiplicity="*" />
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+    <End Role="VEHICULES" Type="Self.VEHICULES" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CATEGORIES">
         <PropertyRef Name="categoryID" />

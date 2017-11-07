@@ -1,24 +1,63 @@
-﻿@model IEnumerable<FirstCargoApp.Models.VEHICULES>
+﻿@model IEnumerable<FirstCargoApp.Models.Vehicule>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @ViewResources.Resource.VehiculeRecords;
 }
 
-<h2>Index</h2>
+<h2>@ViewResources.Resource.VehiculeRecords</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@ViewResources.Resource.Create, "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.senderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senderAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senderPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recieverPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.depth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contentDescription)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.vehiculeType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.frameNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
         </th>
         <th></th>
     </tr>
@@ -26,18 +65,57 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.senderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senderAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senderPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.depth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contentDescription)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.vehiculeType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.frameNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CATEGORIES.categoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.vehiculeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.vehiculeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.vehiculeID })
+            @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |
+            @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id = item.vehiculeID }) |
+            @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id = item.vehiculeID })
         </td>
     </tr>
 }

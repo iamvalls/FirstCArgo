@@ -25,6 +25,8 @@ namespace FirstCargoApp.Models
         [Display(Name = "UserLastName", ResourceType = typeof(ViewResources.Resource))]
         public string userLastName { get; set; }
         [Display(Name = "DateOfBirth", ResourceType = typeof(ViewResources.Resource))]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> dateOfBirth { get; set; }
         [DataType(DataType.Password)]
         [Required(ErrorMessageResourceName = "PasswordRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
@@ -33,6 +35,8 @@ namespace FirstCargoApp.Models
         [Display(Name = "IsAdmin", ResourceType = typeof(ViewResources.Resource))]
         public bool isAdmin { get; set; }
         [Display(Name = "CreatedDate", ResourceType = typeof(ViewResources.Resource))]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> createdDate { get; set; }
         public string confirmationToken { get; set; }
         [Display(Name = "IsConfirmed", ResourceType = typeof(ViewResources.Resource))]
@@ -57,9 +61,10 @@ namespace FirstCargoApp.Models
         [Required(ErrorMessageResourceName = "NewPasswordRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         [Display(Name = "NewPassword", ResourceType = typeof(ViewResources.Resource))]
         public string newPassword { get; set; }
-        [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
-        [Display(Name = "Email", ResourceType = typeof(ViewResources.Resource))]
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailAddressRequired")]
         public string email { get; set; }
+        public string vCode { get; set; }
     }
 }

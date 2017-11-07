@@ -24,23 +24,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OTHERS">
-      <EntityTypeMapping TypeName="FirstCargoDbModel.OTHERS">
-        <MappingFragment StoreEntitySet="OTHERS">
-          <ScalarProperty Name="otherID" ColumnName="otherID" />
-          <ScalarProperty Name="otherType" ColumnName="otherType" />
-          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PACKAGES">
-      <EntityTypeMapping TypeName="FirstCargoDbModel.PACKAGES">
-        <MappingFragment StoreEntitySet="PACKAGES">
-          <ScalarProperty Name="packageID" ColumnName="packageID" />
-          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USER">
       <EntityTypeMapping TypeName="FirstCargoDbModel.USER">
         <MappingFragment StoreEntitySet="USER">
@@ -67,12 +50,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="OTHERS">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.OTHERS">
+        <MappingFragment StoreEntitySet="OTHERS">
+          <ScalarProperty Name="otherType" ColumnName="otherType" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PACKAGES">
+      <EntityTypeMapping TypeName="FirstCargoDbModel.PACKAGES">
+        <MappingFragment StoreEntitySet="PACKAGES">
+          <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="VEHICULES">
       <EntityTypeMapping TypeName="FirstCargoDbModel.VEHICULES">
         <MappingFragment StoreEntitySet="VEHICULES">
-          <ScalarProperty Name="vehiculeID" ColumnName="vehiculeID" />
-          <ScalarProperty Name="vehiculeType" ColumnName="vehiculeType" />
           <ScalarProperty Name="frameNumber" ColumnName="frameNumber" />
+          <ScalarProperty Name="vehiculeType" ColumnName="vehiculeType" />
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
         </MappingFragment>
       </EntityTypeMapping>

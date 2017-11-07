@@ -1,21 +1,22 @@
-﻿@model FirstCargoApp.Models.Package
+﻿@model FirstCargoApp.Models.Other
 
 @{
-    ViewBag.Title = @ViewResources.Resource.Detail;
+    ViewBag.Title = "Delete";
 }
 
-<h2>@ViewResources.Resource.Detail</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Package</h4>
-	<hr />
+    <h4>Other</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.packageType)
+            @Html.DisplayNameFor(model => model.otherType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.packageType)
+            @Html.DisplayFor(model => model.otherType)
         </dd>
 
         <dt>
@@ -129,9 +130,15 @@
         <dd>
             @Html.DisplayFor(model => model.contentDescription)
         </dd>
+
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.packageID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

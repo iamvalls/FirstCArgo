@@ -12,17 +12,10 @@ namespace FirstCargoApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CATEGORIES
+    public partial class Other
     {
-        public CATEGORIES()
-        {
-            this.OTHERS = new HashSet<OTHERS>();
-            this.VEHICULES = new HashSet<VEHICULES>();
-            this.PACKAGES = new HashSet<PACKAGES>();
-        }
-    
-        public int categoryID { get; set; }
-        public string categoryName { get; set; }
+        public int otherID { get; set; }
+        public string otherType { get; set; }
         public string senderName { get; set; }
         public string senderAdress { get; set; }
         public string senderPhoneNumber { get; set; }
@@ -38,9 +31,5 @@ namespace FirstCargoApp.Models
         public Nullable<decimal> depth { get; set; }
         public string contentDescription { get; set; }
         public string userID { get; set; }
-    
-        public virtual ICollection<OTHERS> OTHERS { get; set; }
-        public virtual ICollection<VEHICULES> VEHICULES { get; set; }
-        public virtual ICollection<PACKAGES> PACKAGES { get; set; }
     }
 }
