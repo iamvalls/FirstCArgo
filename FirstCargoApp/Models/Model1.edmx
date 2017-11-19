@@ -18,14 +18,16 @@
           <Property Name="recieverAdress" Type="varchar" MaxLength="255" />
           <Property Name="recieverPhoneNumber" Type="varchar" MaxLength="22" />
           <Property Name="destination" Type="varchar" MaxLength="255" />
-          <Property Name="price" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="paid" Type="bit" Nullable="false" />
-          <Property Name="weight" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="height" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="length" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="depth" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="decimal" Precision="18" Scale="0" />
           <Property Name="contentDescription" Type="varchar" MaxLength="255" />
-          <Property Name="userID" Type="varchar" MaxLength="255" />
+          <Property Name="userID" Type="int" />
+          <Property Name="senderEmail" Type="varchar" MaxLength="255" />
+          <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -40,14 +42,16 @@
           <Property Name="recieverAdress" Type="varchar" MaxLength="255" />
           <Property Name="recieverPhoneNumber" Type="varchar" MaxLength="22" />
           <Property Name="destination" Type="varchar" MaxLength="255" />
-          <Property Name="price" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="paid" Type="bit" Nullable="false" />
-          <Property Name="weight" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="height" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="length" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="depth" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="decimal" Precision="18" Scale="0" />
           <Property Name="contentDescription" Type="varchar" MaxLength="255" />
-          <Property Name="userID" Type="varchar" MaxLength="255" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="senderEmail" Type="varchar" MaxLength="255" />
+          <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -87,16 +91,18 @@
           <Property Name="recieverAdress" Type="varchar" MaxLength="255" />
           <Property Name="recieverPhoneNumber" Type="varchar" MaxLength="22" />
           <Property Name="destination" Type="varchar" MaxLength="255" />
-          <Property Name="price" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="paid" Type="bit" Nullable="false" />
-          <Property Name="weight" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="height" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="length" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="depth" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="decimal" Precision="18" Scale="0" />
           <Property Name="contentDescription" Type="varchar" MaxLength="255" />
-          <Property Name="userID" Type="varchar" MaxLength="255" />
+          <Property Name="userID" Type="int" />
           <Property Name="vehiculeType" Type="varchar" MaxLength="255" />
           <Property Name="frameNumber" Type="varchar" MaxLength="255" />
+          <Property Name="senderEmail" Type="varchar" MaxLength="255" />
+          <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="FirstCargoDbModelStoreContainer">
           <EntitySet Name="Other" EntityType="Self.Other" Schema="dbo" store:Type="Tables" />
@@ -108,79 +114,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FirstCargoDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Other">
-          <Key>
-            <PropertyRef Name="otherID" />
-          </Key>
-          <Property Name="otherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="otherType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="paid" Type="Boolean" Nullable="false" />
-          <Property Name="weight" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="height" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="length" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="depth" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="userID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Package">
-          <Key>
-            <PropertyRef Name="packageID" />
-          </Key>
-          <Property Name="packageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="packageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="paid" Type="Boolean" Nullable="false" />
-          <Property Name="weight" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="height" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="length" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="depth" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="userID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Vehicule">
-          <Key>
-            <PropertyRef Name="vehiculeID" />
-          </Key>
-          <Property Name="vehiculeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="paid" Type="Boolean" Nullable="false" />
-          <Property Name="weight" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="height" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="length" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="depth" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="userID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="vehiculeType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="frameNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityContainer Name="FirstCargoDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Other" EntityType="Self.Other" />
-          <EntitySet Name="Package" EntityType="Self.Package" />
-          <EntitySet Name="Vehicule" EntityType="Self.Vehicule" />
-          <EntitySet Name="USER" EntityType="FirstCargoDbModel.USER" />
-        </EntityContainer>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="userID" />
@@ -207,106 +140,191 @@
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="vCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityContainer Name="FirstCargoDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <EntitySet Name="Other" EntityType="FirstCargoDbModel.Other" />
+          <EntitySet Name="Package" EntityType="FirstCargoDbModel.Package" />
+          <EntitySet Name="Vehicule" EntityType="FirstCargoDbModel.Vehicule" />
+        </EntityContainer>
+        <EntityType Name="Other">
+          <Key>
+            <PropertyRef Name="otherID" />
+          </Key>
+          <Property Name="otherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="otherType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paid" Type="Boolean" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="packageID" />
+          </Key>
+          <Property Name="packageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="packageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paid" Type="Boolean" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vehicule">
+          <Key>
+            <PropertyRef Name="vehiculeID" />
+          </Key>
+          <Property Name="vehiculeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="senderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="recieverName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverPhoneNumber" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paid" Type="Boolean" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="height" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="length" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="depth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="contentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="vehiculeType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="frameNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FirstCargoDbModelStoreContainer" CdmEntityContainer="FirstCargoDbEntities">
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="FirstCargoDbModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+                <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="confirmationToken" ColumnName="confirmationToken" />
+                <ScalarProperty Name="isConfirmed" ColumnName="isConfirmed" />
+                <ScalarProperty Name="lastPasstWortFailuresDates" ColumnName="lastPasstWortFailuresDates" />
+                <ScalarProperty Name="passwordFailuresDateSinceLastSuccess" ColumnName="passwordFailuresDateSinceLastSuccess" />
+                <ScalarProperty Name="passwordChangedDates" ColumnName="passwordChangedDates" />
+                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+                <ScalarProperty Name="passwordVerificationToken" ColumnName="passwordVerificationToken" />
+                <ScalarProperty Name="passwordVerificationTokenExprirationDate" ColumnName="passwordVerificationTokenExprirationDate" />
+                <ScalarProperty Name="oldPassword" ColumnName="oldPassword" />
+                <ScalarProperty Name="confirmPassword" ColumnName="confirmPassword" />
+                <ScalarProperty Name="newPassword" ColumnName="newPassword" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="vCode" ColumnName="vCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Other">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Other">
               <MappingFragment StoreEntitySet="Other">
-                <ScalarProperty Name="otherID" ColumnName="otherID" />
-                <ScalarProperty Name="otherType" ColumnName="otherType" />
-                <ScalarProperty Name="senderName" ColumnName="senderName" />
-                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
-                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
-                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
-                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
-                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
-                <ScalarProperty Name="destination" ColumnName="destination" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="paid" ColumnName="paid" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="height" ColumnName="height" />
-                <ScalarProperty Name="length" ColumnName="length" />
-                <ScalarProperty Name="depth" ColumnName="depth" />
-                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+                <ScalarProperty Name="recieverEmail" ColumnName="recieverEmail" />
+                <ScalarProperty Name="senderEmail" ColumnName="senderEmail" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+                <ScalarProperty Name="depth" ColumnName="depth" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
+                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
+                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
+                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
+                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
+                <ScalarProperty Name="senderName" ColumnName="senderName" />
+                <ScalarProperty Name="otherType" ColumnName="otherType" />
+                <ScalarProperty Name="otherID" ColumnName="otherID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Package">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Package">
               <MappingFragment StoreEntitySet="Package">
-                <ScalarProperty Name="packageID" ColumnName="packageID" />
-                <ScalarProperty Name="packageType" ColumnName="packageType" />
-                <ScalarProperty Name="senderName" ColumnName="senderName" />
-                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
-                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
-                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
-                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
-                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
-                <ScalarProperty Name="destination" ColumnName="destination" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="paid" ColumnName="paid" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="height" ColumnName="height" />
-                <ScalarProperty Name="length" ColumnName="length" />
-                <ScalarProperty Name="depth" ColumnName="depth" />
-                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+                <ScalarProperty Name="recieverEmail" ColumnName="recieverEmail" />
+                <ScalarProperty Name="senderEmail" ColumnName="senderEmail" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+                <ScalarProperty Name="depth" ColumnName="depth" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
+                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
+                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
+                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
+                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
+                <ScalarProperty Name="senderName" ColumnName="senderName" />
+                <ScalarProperty Name="packageType" ColumnName="packageType" />
+                <ScalarProperty Name="packageID" ColumnName="packageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vehicule">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Vehicule">
               <MappingFragment StoreEntitySet="Vehicule">
-                <ScalarProperty Name="vehiculeID" ColumnName="vehiculeID" />
-                <ScalarProperty Name="senderName" ColumnName="senderName" />
-                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
-                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
-                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
-                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
-                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
-                <ScalarProperty Name="destination" ColumnName="destination" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="paid" ColumnName="paid" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="height" ColumnName="height" />
-                <ScalarProperty Name="length" ColumnName="length" />
-                <ScalarProperty Name="depth" ColumnName="depth" />
-                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
-                <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="vehiculeType" ColumnName="vehiculeType" />
+                <ScalarProperty Name="recieverEmail" ColumnName="recieverEmail" />
+                <ScalarProperty Name="senderEmail" ColumnName="senderEmail" />
                 <ScalarProperty Name="frameNumber" ColumnName="frameNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER">
-            <EntityTypeMapping TypeName="FirstCargoDbModel.USER">
-              <MappingFragment StoreEntitySet="USER">
-                <ScalarProperty Name="vCode" ColumnName="vCode" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="newPassword" ColumnName="newPassword" />
-                <ScalarProperty Name="confirmPassword" ColumnName="confirmPassword" />
-                <ScalarProperty Name="oldPassword" ColumnName="oldPassword" />
-                <ScalarProperty Name="passwordVerificationTokenExprirationDate" ColumnName="passwordVerificationTokenExprirationDate" />
-                <ScalarProperty Name="passwordVerificationToken" ColumnName="passwordVerificationToken" />
-                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
-                <ScalarProperty Name="passwordChangedDates" ColumnName="passwordChangedDates" />
-                <ScalarProperty Name="passwordFailuresDateSinceLastSuccess" ColumnName="passwordFailuresDateSinceLastSuccess" />
-                <ScalarProperty Name="lastPasstWortFailuresDates" ColumnName="lastPasstWortFailuresDates" />
-                <ScalarProperty Name="isConfirmed" ColumnName="isConfirmed" />
-                <ScalarProperty Name="confirmationToken" ColumnName="confirmationToken" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
-                <ScalarProperty Name="userLastName" ColumnName="userLastName" />
-                <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="vehiculeType" ColumnName="vehiculeType" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="contentDescription" ColumnName="contentDescription" />
+                <ScalarProperty Name="depth" ColumnName="depth" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="recieverPhoneNumber" ColumnName="recieverPhoneNumber" />
+                <ScalarProperty Name="recieverAdress" ColumnName="recieverAdress" />
+                <ScalarProperty Name="recieverName" ColumnName="recieverName" />
+                <ScalarProperty Name="senderPhoneNumber" ColumnName="senderPhoneNumber" />
+                <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
+                <ScalarProperty Name="senderName" ColumnName="senderName" />
+                <ScalarProperty Name="vehiculeID" ColumnName="vehiculeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

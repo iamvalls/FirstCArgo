@@ -11,26 +11,58 @@ namespace FirstCargoApp.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Vehicule
     {
         public int vehiculeID { get; set; }
+        [Display(Name = "SenderName", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "SenderNameRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string senderName { get; set; }
+        [Display(Name = "SenderAdress", ResourceType = typeof(ViewResources.Resource))]
         public string senderAdress { get; set; }
+        [Display(Name = "SenderPhoneNumber", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "SenderPhoneNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string senderPhoneNumber { get; set; }
+        [Display(Name = "RecieverName", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "RecieverNameRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string recieverName { get; set; }
+        [Display(Name = "RecieverAdress", ResourceType = typeof(ViewResources.Resource))]
         public string recieverAdress { get; set; }
+        [Display(Name = "RecieverPhoneNumber", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "RecieverPhoneNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string recieverPhoneNumber { get; set; }
+        [Display(Name = "Destination", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "DestinationRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string destination { get; set; }
+        [Display(Name = "Price", ResourceType = typeof(ViewResources.Resource))]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:n0}")]
         public Nullable<decimal> price { get; set; }
+        [Display(Name = "Paid", ResourceType = typeof(ViewResources.Resource))]
         public bool paid { get; set; }
+        [Display(Name = "Weight", ResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> weight { get; set; }
+        [Display(Name = "Height", ResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> height { get; set; }
+        [Display(Name = "Length", ResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> length { get; set; }
+        [Display(Name = "Depth", ResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> depth { get; set; }
+        [Display(Name = "ContentDescription", ResourceType = typeof(ViewResources.Resource))]
         public string contentDescription { get; set; }
-        public string userID { get; set; }
+        public Nullable<int> userID { get; set; }
+        [Display(Name = "VehiculeType", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "VehiculeTypeRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string vehiculeType { get; set; }
+        [Display(Name = "FrameNumber", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "FrameNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string frameNumber { get; set; }
+        [Display(Name = "SenderEmail", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "EmailAddressRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
+        public string senderEmail { get; set; }
+        [Display(Name = "RecieverEmail", ResourceType = typeof(ViewResources.Resource))]
+        [EmailAddress(ErrorMessage = "EmailAddressRequired")]
+        public string recieverEmail { get; set; }
     }
 }

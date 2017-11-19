@@ -34,13 +34,12 @@ namespace FirstCargoApp.Controllers
         //
         // GET: /Home/ManageUser
         [HttpGet]
-        public ActionResult ManageUser(ManageMessageId? message)
+        public ActionResult ManageUser(NotificationMessage.ManageMessageId? message)
         {
+
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Ihr Kennwort wurde geändert."
-                : message == ManageMessageId.SetPasswordSuccess ? "Ihr Kennwort wurde festgelegt."
-                : message == ManageMessageId.RemoveLoginSuccess ? "Die externe Anmeldung wurde entfernt."
-                : message == ManageMessageId.Error ? "Fehler"
+                message == NotificationMessage.ManageMessageId.ChangePasswordSuccess ? @ViewResources.Resource.ChangePasswordSuccess
+                : message == NotificationMessage.ManageMessageId.Error ? @ViewResources.Resource.Error
                 : "";
             
             ViewBag.ReturnUrl = Url.Action("ManageUser");
@@ -53,15 +52,9 @@ namespace FirstCargoApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ManageUser(USER user)
         {
-            //Todo
-            //bool hasPassword = HasPassword(); // le mot de passe na#est pas encore crypeter 
-            //ViewBag.HasLocalPassword = hasPassword;
-            bool hasPassword = true; // apres avoir hasher le ot de pase effacer cette ligne
+
             ViewBag.ReturnUrl = Url.Action("ManageUser");
 
-
-            if (hasPassword)
-            {
                 // Remove the useles data column because we dont#t need them to Change the password
                 ModelState.Remove("password");
                 ModelState.Remove("userName");
@@ -79,27 +72,44 @@ namespace FirstCargoApp.Controllers
                 {
                     // Set obligated User Property before updated the changes 
                     user.password = user.newPassword;
-                    user.userName = Int32.Parse(User.Identity.GetUserName().Split('|')[0]).ToString();
+                    user.userName = User.Identity.GetUserName().Split('|')[0].ToString();
                     user.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
-
-                    if (user.email != null) // Just for test
-                        user.email = user.email;
-                    else
-                        user.email = "elievalls@yahoo.fr";
-                        
-                    db.Entry(user).State = EntityState.Modified;
-                    try
+                    using (FirstCargoDbEntities entities = new FirstCargoDbEntities())
                     {
-                        await db.SaveChangesAsync();
-                    }
-                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-                    {
-                        // Todo Log the error
-                    }
+                        USER userToUpdate = entities.USER.SingleOrDefault(u => u.userName == user.userName);
+                        var hashCode = userToUpdate.vCode;
+                        //Password Hasing Process Call Helper Class Method    
+                        var encodingPasswordString = RegistrationLoginHelper.EncodePassword(user.oldPassword, hashCode);
 
-                    return RedirectToAction("ManageUser", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        if (encodingPasswordString.Equals(userToUpdate.password))
+                        {
+
+                            //Check Login Detail User Name Or Password    
+                            var query = (from s in entities.USER where (s.userName == user.userName || s.email == user.userName) && s.password.Equals(encodingPasswordString) select s).FirstOrDefault();
+
+                            if(query != null){
+
+        
+                                var password = RegistrationLoginHelper.EncodePassword(user.newPassword, hashCode);
+                                userToUpdate.oldPassword = userToUpdate.password;
+                                userToUpdate.password = userToUpdate.newPassword = userToUpdate.confirmPassword =password;
+                                userToUpdate.passwordChangedDates = DateTime.Now;
+
+                                db.Entry(userToUpdate).State = EntityState.Modified;
+                                try
+                                {
+                                    await db.SaveChangesAsync();
+                                }
+                                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                                {
+                                    // Todo Log the error
+                                }
+                            }
+
+                        }
+                    }
+                    return RedirectToAction("ManageUser", new { Message = NotificationMessage.ManageMessageId.ChangePasswordSuccess });
                 }
-            }
            // how form again if there is a failure
             return View(user);
         }
@@ -169,6 +179,7 @@ namespace FirstCargoApp.Controllers
                     user.createdDate = DateTime.Now;
                     user.confirmationToken = "";
                     user.isConfirmed = false;
+ 
                     db.USER.Add(user);
                     await db.SaveChangesAsync();
                     //return RedirectToAction("LogIn", "Login");

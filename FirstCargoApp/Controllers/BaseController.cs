@@ -39,6 +39,9 @@ namespace FirstCargoApp.Controllers
             {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(Session["CurrentCulture"].ToString());
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator = " ";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator = ".";
             }
         }
 

@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c157e286c2a04ffa9537c0acc6cff9ce" Name="Diagram1" ZoomLevel="90">
-        <EntityTypeShape EntityType="FirstCargoDbModel.Other" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FirstCargoDbModel.Package" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FirstCargoDbModel.Vehicule" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FirstCargoDbModel.USER" Width="1.5" PointX="0.75" PointY="6.75" />
+      <Diagram DiagramId="91c76a2661f54962984316d348e1b51c" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="FirstCargoDbModel.USER" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirstCargoDbModel.Other" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FirstCargoDbModel.Package" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="FirstCargoDbModel.Vehicule" Width="1.5" PointX="2.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

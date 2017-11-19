@@ -246,8 +246,8 @@
   <data name="FrameNumberRequired" xml:space="preserve">
     <value>Please Enter the Frame Number</value>
   </data>
-  <data name="Heigth" xml:space="preserve">
-    <value>Heigth</value>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
   </data>
   <data name="Length" xml:space="preserve">
     <value>Length</value>
@@ -276,8 +276,8 @@
   <data name="SenderPhoneNumber" xml:space="preserve">
     <value>Sender Phone Number</value>
   </data>
-  <data name="Weigth" xml:space="preserve">
-    <value>Weigth</value>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
   </data>
   <data name="EmailAddressRequired" xml:space="preserve">
     <value>Invalid Email Address</value>
@@ -320,5 +320,59 @@
   </data>
   <data name="VehiculeRecords" xml:space="preserve">
     <value>Vehicule Records</value>
+  </data>
+  <data name="RecieverAdress" xml:space="preserve">
+    <value>Reciever Adress</value>
+  </data>
+  <data name="RecieverEmail" xml:space="preserve">
+    <value>Reciever Email</value>
+  </data>
+  <data name="SenderAdress" xml:space="preserve">
+    <value>Absender Adress</value>
+  </data>
+  <data name="SenderEmail" xml:space="preserve">
+    <value>Sender Email</value>
+  </data>
+  <data name="OtherType" xml:space="preserve">
+    <value>Other Type</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Package Type</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Password Successfully change</value>
+  </data>
+  <data name="DeleteRecordSuccess" xml:space="preserve">
+    <value>Record successfully deleted</value>
+  </data>
+  <data name="EditRecordSuccess" xml:space="preserve">
+    <value>Record successfully edited</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="RecordSuccess" xml:space="preserve">
+    <value>Record successfully created</value>
+  </data>
+  <data name="Anwendungsname" xml:space="preserve">
+    <value>First Cargo App</value>
+  </data>
+  <data name="DestinationRequired" xml:space="preserve">
+    <value>Please enter the destination</value>
+  </data>
+  <data name="PackageTypeRequired" xml:space="preserve">
+    <value>Please enter a Package Type</value>
+  </data>
+  <data name="RecieverNameRequired" xml:space="preserve">
+    <value>Please enter the name of the reciever number</value>
+  </data>
+  <data name="RecieverPhoneNumberRequired" xml:space="preserve">
+    <value>Please enter the reciever phone number</value>
+  </data>
+  <data name="SenderPhoneNumberRequired" xml:space="preserve">
+    <value>Please enter the sender phone number</value>
+  </data>
+  <data name="VehiculeTypeRequired" xml:space="preserve">
+    <value>Please enter the typ of the Car</value>
   </data>
 </root>

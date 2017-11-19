@@ -55,24 +55,13 @@ namespace FirstCargoApp.Controllers
                     // User found in the database
                     if (query != null)
                     {
-  
+
                         FormsAuthentication.SetAuthCookie(username + "|" + user.userID.ToString() + "|" + user.isAdmin, false);
                         int test = CurrentUserId;
                         string test2 = User.Identity.GetUserName().Split('|')[0];
                         string test3 = User.Identity.GetUserName();
 
-                            return RedirectToAction("Index", "Vehicule");
-                        
-                        
-                        //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                        //{
-                        //    return Redirect(returnUrl);
-                        //}
-                        //else
-                        //{
-                        //    return RedirectToAction("Login", "Home");
-                        //}
+                        return RedirectToAction("Index", "Vehicule");
                     }
                     else
                     {
@@ -127,14 +116,14 @@ namespace FirstCargoApp.Controllers
                     {
                         //let us take out the username now                
                         string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
-                        string roles= string.Empty;
+                        string roles = string.Empty;
 
                         using (FirstCargoDbEntities entities = new FirstCargoDbEntities())
                         {
                             USER user = entities.USER.SingleOrDefault(u => u.userName == username);
 
                             if (user.isAdmin)
-                            roles = "Admin";
+                                roles = "Admin";
                         }
                         //let us extract the roles from our own custom cookie
 
@@ -218,6 +207,9 @@ namespace FirstCargoApp.Controllers
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(ddlCulture);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(ddlCulture);
+            Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator = " ";
+            Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator = ".";
 
             Session["CurrentCulture"] = ddlCulture;
             return View("Login");

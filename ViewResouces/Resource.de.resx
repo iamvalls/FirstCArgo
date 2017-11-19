@@ -243,7 +243,7 @@
   <data name="FrameNumberRequired" xml:space="preserve">
     <value>Bitte geben Sie die Farhzeugident. Nr ein.</value>
   </data>
-  <data name="Heigth" xml:space="preserve">
+  <data name="Height" xml:space="preserve">
     <value>Höhe</value>
   </data>
   <data name="Length" xml:space="preserve">
@@ -273,7 +273,7 @@
   <data name="SenderPhoneNumber" xml:space="preserve">
     <value>Absender Tel Nr</value>
   </data>
-  <data name="Weigth" xml:space="preserve">
+  <data name="Weight" xml:space="preserve">
     <value>Breite</value>
   </data>
   <data name="EmailAddressRequired" xml:space="preserve">
@@ -317,5 +317,59 @@
   </data>
   <data name="VehiculeRecords" xml:space="preserve">
     <value>Autos Einträge</value>
+  </data>
+  <data name="RecieverAdress" xml:space="preserve">
+    <value>Empf Adress</value>
+  </data>
+  <data name="RecieverEmail" xml:space="preserve">
+    <value>Empfger Email</value>
+  </data>
+  <data name="SenderAdress" xml:space="preserve">
+    <value>Adress Absd</value>
+  </data>
+  <data name="SenderEmail" xml:space="preserve">
+    <value>Email Absd</value>
+  </data>
+  <data name="OtherType" xml:space="preserve">
+    <value>Andere Typ</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Paket Typ</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Ihr Kennwort wurde geändert.</value>
+  </data>
+  <data name="DeleteRecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich gelöscht</value>
+  </data>
+  <data name="EditRecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich bearbeitet</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="RecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich angelegt</value>
+  </data>
+  <data name="Anwendungsname" xml:space="preserve">
+    <value>First Cargo App</value>
+  </data>
+  <data name="DestinationRequired" xml:space="preserve">
+    <value>Bitte Ziel eingeben</value>
+  </data>
+  <data name="PackageTypeRequired" xml:space="preserve">
+    <value>Bitte Paket Art eingeben</value>
+  </data>
+  <data name="RecieverNameRequired" xml:space="preserve">
+    <value>Bitte Empfänger Name eingeben</value>
+  </data>
+  <data name="RecieverPhoneNumberRequired" xml:space="preserve">
+    <value>Bitte Empfänger Telefonnummer eingeben</value>
+  </data>
+  <data name="SenderPhoneNumberRequired" xml:space="preserve">
+    <value>Bitte Absender Telefonnummer eingeben</value>
+  </data>
+  <data name="VehiculeTypeRequired" xml:space="preserve">
+    <value>Bitte Auto Typ eingeben</value>
   </data>
 </root>

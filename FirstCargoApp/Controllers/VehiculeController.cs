@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FirstCargoApp.Models;
+using FirstCargoApp.Helper;
+
 
 namespace FirstCargoApp.Controllers
 {
@@ -16,9 +19,23 @@ namespace FirstCargoApp.Controllers
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
 
         // GET: /Vehicule/
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message)
         {
-            return View(await db.Vehicule.ToListAsync());
+
+            ViewBag.StatusMessage =
+                message == NotificationMessage.ManageMessageId.RecordSuccess ? @ViewResources.Resource.RecordSuccess
+                : message == NotificationMessage.ManageMessageId.EditRecordSuccess ? @ViewResources.Resource.EditRecordSuccess
+                : message == NotificationMessage.ManageMessageId.DeleteRecordSuccess ? @ViewResources.Resource.DeleteRecordSuccess
+                : "";
+
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+
+            int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+            if (Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
+                return View(await db.Vehicule.ToListAsync());
+
+            
+            return View(await db.Vehicule.Where(s => s.userID==id).ToListAsync());
         }
 
         // GET: /Vehicule/Details/5
@@ -28,6 +45,7 @@ namespace FirstCargoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Vehicule vehicule = await db.Vehicule.FindAsync(id);
             if (vehicule == null)
             {
@@ -47,13 +65,24 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+
             if (ModelState.IsValid)
             {
+                vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                 db.Vehicule.Add(vehicule);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    // Todo Log the error
+                }
+
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.RecordSuccess });
             }
 
             return View(vehicule);
@@ -79,13 +108,24 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="vehiculeID,senderName,senderAdress,senderPhoneNumber,recieverName,recieverAdress,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+
             if (ModelState.IsValid)
             {
+                vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                 db.Entry(vehicule).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    // Todo Log the error
+                }
+
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.EditRecordSuccess });
             }
             return View(vehicule);
         }
@@ -110,11 +150,23 @@ namespace FirstCargoApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+
             Vehicule vehicule = await db.Vehicule.FindAsync(id);
+
             db.Vehicule.Remove(vehicule);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.DeleteRecordSuccess });
         }
+
 
         protected override void Dispose(bool disposing)
         {
