@@ -267,8 +267,8 @@
   <data name="RecieverPhoneNumber" xml:space="preserve">
     <value>Reciever Phone Number</value>
   </data>
-  <data name="SenderAddress" xml:space="preserve">
-    <value>Sender Address</value>
+  <data name="SenderAdressRequired" xml:space="preserve">
+    <value>Please Enter the Sender Address.</value>
   </data>
   <data name="SenderNameRequired" xml:space="preserve">
     <value>Please Enter the Name of the sender</value>
@@ -374,5 +374,44 @@
   </data>
   <data name="VehiculeTypeRequired" xml:space="preserve">
     <value>Please enter the typ of the Car</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="searchbyName" xml:space="preserve">
+    <value>Find by Name</value>
+  </data>
+  <data name="NoEntryFound" xml:space="preserve">
+    <value>No Entry Found</value>
+  </data>
+  <data name="OtherTypeRequired" xml:space="preserve">
+    <value>Please enter an other type </value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DepthRequired" xml:space="preserve">
+    <value>Please enter the Depth</value>
+  </data>
+  <data name="HeigthRequired" xml:space="preserve">
+    <value>Please enter the Heigth</value>
+  </data>
+  <data name="LenghtRequired" xml:space="preserve">
+    <value>Please enter the Length</value>
+  </data>
+  <data name="PriceRequired" xml:space="preserve">
+    <value>Please enter the price.</value>
+  </data>
+  <data name="SenderEmailRequired" xml:space="preserve">
+    <value>Please enter the Email</value>
+  </data>
+  <data name="WeightRequired" xml:space="preserve">
+    <value>Please enter the Weight</value>
+  </data>
+  <data name="RecieverAddressRequired" xml:space="preserve">
+    <value>Please Enter the Reciever Address.</value>
+  </data>
+  <data name="DigitRequired" xml:space="preserve">
+    <value>Please enter Digit.</value>
   </data>
 </root>

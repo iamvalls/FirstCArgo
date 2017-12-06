@@ -139,6 +139,8 @@ C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Microsoft.Ow
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Newtonsoft.Json.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Owin.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\PagedList.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\PagedList.Mvc.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Net.Http.Formatting.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Spatial.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Web.Helpers.dll
@@ -156,6 +158,8 @@ C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\WebGrease.dl
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\ViewResources.pdb
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Microsoft.Data.Edm.xml
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\Microsoft.Data.OData.xml
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\PagedList.xml
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\PagedList.Mvc.xml
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Net.Http.Formatting.xml
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Spatial.xml
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\System.Web.Http.xml

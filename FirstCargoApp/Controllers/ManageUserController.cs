@@ -12,6 +12,9 @@ using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using FirstCargoApp.Models;
 using FirstCargoApp.Helper;
+using System.Threading;
+using System.Globalization;
+using PagedList;
 
 namespace FirstCargoApp.Controllers
 {
@@ -40,9 +43,12 @@ namespace FirstCargoApp.Controllers
             ViewBag.StatusMessage =
                 message == NotificationMessage.ManageMessageId.ChangePasswordSuccess ? @ViewResources.Resource.ChangePasswordSuccess
                 : message == NotificationMessage.ManageMessageId.Error ? @ViewResources.Resource.Error
+                : message == NotificationMessage.ManageMessageId.NoEntryFound ? @ViewResources.Resource.NoEntryFound
                 : "";
             
             ViewBag.ReturnUrl = Url.Action("ManageUser");
+
+            
             return View();
         }
 
@@ -115,9 +121,87 @@ namespace FirstCargoApp.Controllers
         }
 
         // GET: /ManageUser/ Show the list of User
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(await db.USER.ToListAsync());
+            // Get all entries from DB
+            var users = await db.USER.ToListAsync();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.userFirstName.Contains(searchString)
+                                       || s.userLastName.Contains(searchString)).ToList();
+            }
+
+            // In case there is no entry
+            if (users.Count == 0)
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.NoEntryFound });
+
+            // Viewbag for Sort
+
+            ViewBag.UserNameSortParm = String.IsNullOrEmpty(sortOrder) ? "user_name_desc" : "";
+            ViewBag.UserFirstNameSortParm = sortOrder == "user_first_name" ? "user_first_name_desc" : "user_first_name";
+            ViewBag.UserLastNameSortParm = sortOrder == "user_last_name" ? "user_last_name_desc" : "user_last_name";
+            ViewBag.EmailSortParm = sortOrder == "email" ? "email_desc" : "email";
+            ViewBag.IsAdminSortParm = sortOrder == "is_admin" ? "is_admin_desc" : "is_admin";
+            ViewBag.CreatedDateSortParm = sortOrder == "created_date" ? "created_date_desc" : "created_date";
+            ViewBag.IsConfirmedSortParm = sortOrder == "is_confirmed" ? "is_confirmed_desc" : "is_confirmed";
+
+            // Pages
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            switch (sortOrder)
+            {
+                case "user_name_desc":
+                    users = users.OrderByDescending(s => s.userName).ToList();
+                    break;
+                case "user_first_name":
+                    users = users.OrderBy(s => s.userFirstName).ToList();
+                    break;
+                case "user_first_name_desc":
+                    users = users.OrderByDescending(s => s.userFirstName).ToList();
+                    break;
+                case "user_last_name":
+                    users = users.OrderBy(s => s.userLastName).ToList();
+                    break;
+                case "user_last_name_desc":
+                    users = users.OrderByDescending(s => s.userLastName).ToList();
+                    break;
+                case "email":
+                    users = users.OrderBy(s => s.email).ToList();
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(s => s.email).ToList();
+                    break;
+                case "is_admin":
+                    users = users.OrderBy(s => s.isAdmin).ToList();
+                    break;
+                case "is_admin_desc":
+                    users = users.OrderByDescending(s => s.isAdmin).ToList();
+                    break;
+                case "is_confirmed":
+                    users = users.OrderBy(s => s.isConfirmed).ToList();
+                    break;
+                case "is_confirmed_desc":
+                    users = users.OrderByDescending(s => s.isConfirmed).ToList();
+                    break;
+                default:
+                    users = users.OrderBy(s => s.userName).ToList();
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(users.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /ManageUser/ Show user Details
@@ -334,6 +418,20 @@ namespace FirstCargoApp.Controllers
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
+            }
+        }
+
+        //initilizing culture on controller initialization
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            if (Session["CurrentCulture"] != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator = " ";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator = ".";
             }
         }
 

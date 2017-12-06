@@ -1,4 +1,5 @@
-﻿@model IEnumerable<FirstCargoApp.Models.Package>
+﻿@model PagedList.IPagedList<FirstCargoApp.Models.Package>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = @ViewResources.Resource.PackageRecords;
@@ -11,45 +12,53 @@
 <p>
     @Html.ActionLink(@ViewResources.Resource.CreateNewRecords, "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @ViewResources.Resource.searchbyName: @Html.TextBox("SearchString")
+        <input type="submit" value=@ViewResources.Resource.search />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.packageType)
+            @Html.ActionLink(ViewResources.Resource.PackageType, "Index", new { sortOrder = ViewBag.PackageTypeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.senderName)
+            @Html.ActionLink(ViewResources.Resource.SenderName, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.senderAdress)
+            @Html.ActionLink(ViewResources.Resource.SenderAdress, "Index", new { sortOrder = ViewBag.SenderAdressSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.senderEmail)
+            @Html.ActionLink(ViewResources.Resource.SenderEmail, "Index", new { sortOrder = ViewBag.SenderEmailSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.senderPhoneNumber)
+            @Html.ActionLink(ViewResources.Resource.SenderPhoneNumber, "Index", new { sortOrder = ViewBag.SenderPhoneNumberSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recieverName)
+            @Html.ActionLink(ViewResources.Resource.RecieverName, "Index", new { sortOrder = ViewBag.RecieverNameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recieverAdress)
+            @Html.ActionLink(ViewResources.Resource.RecieverAdress, "Index", new { sortOrder = ViewBag.RecieverAdressSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recieverEmail)
+            @Html.ActionLink(ViewResources.Resource.RecieverEmail, "Index", new { sortOrder = ViewBag.RecieverEmailSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recieverPhoneNumber)
+            @Html.ActionLink(ViewResources.Resource.RecieverPhoneNumber, "Index", new { sortOrder = ViewBag.RecieverPhoneNumberSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.destination)
+            @Html.ActionLink(ViewResources.Resource.Destination, "Index", new { sortOrder = ViewBag.DestinationSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.price)
+            @Html.ActionLink(ViewResources.Resource.Price, "Index", new { sortOrder = ViewBag.PriceSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.paid)
+            @Html.ActionLink(ViewResources.Resource.Paid, "Index", new { sortOrder = ViewBag.PaidSortParm })
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -99,3 +108,9 @@
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

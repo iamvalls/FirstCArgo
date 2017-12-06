@@ -20,7 +20,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.packageType, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.packageType)
+                miz
+                @Html.TextBoxFor(model => model.packageType, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.packageType)
             </div>
         </div>
@@ -28,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.senderName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.senderName)
+                @Html.TextBoxFor(model => model.senderName, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.senderName)
             </div>
         </div>
@@ -36,14 +37,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.senderAdress, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.senderAdress)
+                @Html.TextBoxFor(model => model.senderAdress, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.senderAdress)
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.senderEmail, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.senderEmail)
+                @Html.TextBoxFor(model => model.senderEmail, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.senderEmail)
             </div>
         </div>
@@ -51,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.senderPhoneNumber, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.senderPhoneNumber)
+                @Html.TextBoxFor(model => model.senderPhoneNumber, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.senderPhoneNumber)
             </div>
         </div>
@@ -59,7 +61,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.recieverName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recieverName)
+                @Html.TextBoxFor(model => model.recieverName, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.recieverName)
             </div>
         </div>
@@ -67,7 +69,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.recieverAdress, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recieverAdress)
+                @Html.TextBoxFor(model => model.recieverAdress, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.recieverAdress)
             </div>
         </div>
@@ -75,7 +77,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.recieverEmail, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recieverEmail)
+                @Html.TextBoxFor(model => model.recieverEmail, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.recieverEmail)
             </div>
         </div>
@@ -83,7 +85,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.recieverPhoneNumber, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recieverPhoneNumber)
+                @Html.TextBoxFor(model => model.recieverPhoneNumber, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.recieverPhoneNumber)
             </div>
         </div>
@@ -91,7 +93,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.destination, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.destination)
+                @Html.TextBoxFor(model => model.destination, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.destination)
             </div>
         </div>
@@ -100,7 +102,7 @@
             @Html.LabelFor(model => model.price, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @{ Html.EnableClientValidation(false); }
-                @Html.EditorFor(model => model.price)
+                @Html.EditorFor(model => model.price, new { style = "width: 500px" })
                 @{ Html.EnableClientValidation(true); }
                 @Html.ValidationMessageFor(model => model.price)
             </div>
@@ -109,7 +111,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.paid)
+                @Html.CheckBoxFor(model => model.paid, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.paid)
             </div>
         </div>
@@ -118,7 +120,7 @@
             @Html.LabelFor(model => model.weight, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @{ Html.EnableClientValidation(false); }
-                @Html.EditorFor(model => model.weight)
+                @Html.EditorFor(model => model.weight, new { style = "width: 500px" })
                 @Html.ValidationMessageFor(model => model.weight)
             </div>
         </div>
@@ -126,7 +128,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.height, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.height)
+                @Html.EditorFor(model => model.height, new { style = "width: 500px" })
                 @Html.ValidationMessageFor(model => model.height)
             </div>
         </div>
@@ -134,7 +136,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.length, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.length)
+                @Html.EditorFor(model => model.length, new { style = "width: 500px" })
                 @Html.ValidationMessageFor(model => model.length)
             </div>
         </div>
@@ -142,16 +144,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.depth, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.depth)
-                @{ Html.EnableClientValidation(true); }
+                @Html.EditorFor(model => model.depth, new { style = "width: 500px" })
                 @Html.ValidationMessageFor(model => model.depth)
+                @{ Html.EnableClientValidation(true); }
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.contentDescription, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.contentDescription)
+                @Html.TextAreaFor(model => model.contentDescription, new { style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.contentDescription)
             </div>
         </div>

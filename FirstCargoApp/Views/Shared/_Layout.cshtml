@@ -28,9 +28,9 @@
                         CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
                         if (Request.IsAuthenticated) { 
                             
-                        <li>@Html.ActionLink("Vehicule", "Index","Vehicule")</li>
-                        <li>@Html.ActionLink("Pakage", "Index", "Package")</li>
-                        <li>@Html.ActionLink("Other", "Index", "Other")</li>
+                        <li>@Html.ActionLink(@ViewResources.Resource.Vehicule, "Index","Vehicule")</li>
+                        <li>@Html.ActionLink(@ViewResources.Resource.Package, "Index", "Package")</li>
+                        <li>@Html.ActionLink(@ViewResources.Resource.Other, "Index", "Other")</li>
                     }
                     }
                 </ul>

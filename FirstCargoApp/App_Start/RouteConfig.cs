@@ -36,7 +36,7 @@ namespace FirstCargoApp
             routes.MapRoute(
                 name: "Orther",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Orther", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Other", action = "Index", id = UrlParameter.Optional }
             );
 
         }

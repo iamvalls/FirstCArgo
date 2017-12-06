@@ -26,33 +26,40 @@ namespace FirstCargoApp.Models
         public string senderAdress { get; set; }
         [Display(Name = "SenderPhoneNumber", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "SenderPhoneNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
+        [RegularExpression("([0-9][0-9]*)", ErrorMessageResourceName = "DigitRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string senderPhoneNumber { get; set; }
         [Display(Name = "RecieverName", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "RecieverNameRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string recieverName { get; set; }
         [Display(Name = "RecieverAdress", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "RecieverAddressRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string recieverAdress { get; set; }
         [Display(Name = "RecieverPhoneNumber", ResourceType = typeof(ViewResources.Resource))]
-        [Required(ErrorMessageResourceName = "RecieverPhoneNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string recieverPhoneNumber { get; set; }
         [Display(Name = "Destination", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "DestinationRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string destination { get; set; }
         [Display(Name = "Price", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "PriceRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         [DataType("decimal(16 ,3")]
         [DisplayFormat(DataFormatString = "{0:n0}")]
         public Nullable<decimal> price { get; set; }
         [Display(Name = "Paid", ResourceType = typeof(ViewResources.Resource))]
         public bool paid { get; set; }
         [Display(Name = "Weight", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "WeightRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> weight { get; set; }
         [Display(Name = "Height", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "HeightRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> height { get; set; }
         [Display(Name = "Length", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "LengthRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> length { get; set; }
         [Display(Name = "Depth", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "DepthRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public Nullable<decimal> depth { get; set; }
         [Display(Name = "ContentDescription", ResourceType = typeof(ViewResources.Resource))]
+        [DataType(DataType.MultilineText)]
         public string contentDescription { get; set; }
         public int userID { get; set; }
         [Display(Name = "SenderEmail", ResourceType = typeof(ViewResources.Resource))]

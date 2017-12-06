@@ -10,6 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using FirstCargoApp.Models;
 using FirstCargoApp.Helper;
+using System.Threading;
+using System.Globalization;
+using PagedList;
 
 
 namespace FirstCargoApp.Controllers
@@ -19,23 +22,146 @@ namespace FirstCargoApp.Controllers
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
 
         // GET: /Vehicule/
-        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message)
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, int? page)
         {
 
             ViewBag.StatusMessage =
                 message == NotificationMessage.ManageMessageId.RecordSuccess ? @ViewResources.Resource.RecordSuccess
                 : message == NotificationMessage.ManageMessageId.EditRecordSuccess ? @ViewResources.Resource.EditRecordSuccess
                 : message == NotificationMessage.ManageMessageId.DeleteRecordSuccess ? @ViewResources.Resource.DeleteRecordSuccess
+                : message == NotificationMessage.ManageMessageId.NoEntryFound ? @ViewResources.Resource.NoEntryFound
                 : "";
 
             ViewBag.ReturnUrl = Url.Action("Vehicule");
+            var vehicules = await db.Vehicule.ToListAsync();
 
             int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
-            if (Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
-                return View(await db.Vehicule.ToListAsync());
 
-            
-            return View(await db.Vehicule.Where(s => s.userID==id).ToListAsync());
+            // Get Entry for a specific User
+            if (!Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
+                vehicules = vehicules.Where(s => s.userID == id).ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicules = vehicules.Where(s => s.senderName.Contains(searchString)
+                                       || s.recieverName.Contains(searchString)).ToList();
+            }
+
+            // In case there is no entry
+            if (vehicules.Count == 0)
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.NoEntryFound });
+
+            ViewBag.SenderNameSortParm = String.IsNullOrEmpty(sortOrder) ? "sender_name_desc" : "";
+            ViewBag.RecieverNameSortParm = sortOrder == "reciever" ? "reciever_name_desc" : "reciever";
+            ViewBag.VehiculeTypeSortParm = sortOrder == "vehicule_type" ? "vehicule_type_desc" : "vehicule_type";
+            ViewBag.SenderAdressSortParm = sortOrder == "sender_adress" ? "sender_adress_desc" : "sender_adress";
+            ViewBag.SenderEmailSortParm = sortOrder == "sender_email" ? "sender_email_desc" : "sender_email";
+            ViewBag.SenderPhoneNumberSortParm = sortOrder == "sender_phone_number" ? "sender_phone_number_desc" : "sender_phone_number";
+            ViewBag.RecieverAdressSortParm = sortOrder == "reciever_adress" ? "reciever_adress_desc" : "reciever_adress";
+            ViewBag.RecieverEmailSortParm = sortOrder == "reciever_email" ? "reciever_email_desc" : "reciever_email";
+            ViewBag.RecieverPhoneNumberSortParm = sortOrder == "reciever_phone_number" ? "reciever_phone_number_desc" : "reciever_phone_number";
+            ViewBag.DestinationSortParm = sortOrder == "destination" ? "destination_desc" : "destination";
+            ViewBag.PriceSortParm = sortOrder == "price" ? "price_desc" : "price";
+            ViewBag.PaidSortParm = sortOrder == "paid" ? "paid_desc" : "paid";
+            ViewBag.FrameNumberortParm = sortOrder == "frame_number" ? "frame_number_desc" : "frame_number";
+
+            // Pages
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+
+            switch (sortOrder)
+            {
+                case "sender_name_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.senderName).ToList();
+                    break;
+                case "reciever":
+                    vehicules = vehicules.OrderBy(s => s.recieverName).ToList();
+                    break;
+                case "reciever_name_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.recieverName).ToList();
+                    break;
+                case "vehicule_type":
+                    vehicules = vehicules.OrderBy(s => s.vehiculeType).ToList();
+                    break;
+                case "vehicule_type_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.vehiculeType).ToList();
+                    break;
+                case "sender_adress":
+                    vehicules = vehicules.OrderBy(s => s.senderAdress).ToList();
+                    break;
+                case "sender_adress_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.senderAdress).ToList();
+                    break;
+                case "sender_email":
+                    vehicules = vehicules.OrderBy(s => s.senderEmail).ToList();
+                    break;
+                case "sender_email_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.senderEmail).ToList();
+                    break;
+                case "sender_phone_number":
+                    vehicules = vehicules.OrderBy(s => s.senderPhoneNumber).ToList();
+                    break;
+                case "sender_phone_number_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.senderPhoneNumber).ToList();
+                    break;
+                case "reciever_adress":
+                    vehicules = vehicules.OrderBy(s => s.recieverAdress).ToList();
+                    break;
+                case "reciever_adress_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.recieverAdress).ToList();
+                    break;
+                case "reciever_email":
+                    vehicules = vehicules.OrderBy(s => s.recieverEmail).ToList();
+                    break;
+                case "reciever_email_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.recieverEmail).ToList();
+                    break;
+                case "reciever_phone_number":
+                    vehicules = vehicules.OrderBy(s => s.recieverPhoneNumber).ToList();
+                    break;
+                case "reciever_phone_number_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.recieverPhoneNumber).ToList();
+                    break;
+                case "destination":
+                    vehicules = vehicules.OrderBy(s => s.destination).ToList();
+                    break;
+                case "destination_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.destination).ToList();
+                    break;
+                case "price":
+                    vehicules = vehicules.OrderBy(s => s.price).ToList();
+                    break;
+                case "price_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.price).ToList();
+                    break;
+                case "paid":
+                    vehicules = vehicules.OrderBy(s => s.paid).ToList();
+                    break;
+                case "paid_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.paid).ToList();
+                    break;
+                case "frame_number":
+                    vehicules = vehicules.OrderBy(s => s.frameNumber).ToList();
+                    break;
+                case "frame_number_desc":
+                    vehicules = vehicules.OrderByDescending(s => s.frameNumber).ToList();
+                    break;
+                default:
+                    vehicules = vehicules.OrderBy(s => s.senderName).ToList();
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(vehicules.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Vehicule/Details/5
@@ -165,6 +291,20 @@ namespace FirstCargoApp.Controllers
             }
 
             return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.DeleteRecordSuccess });
+        }
+
+        //initilizing culture on controller initialization
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            if (Session["CurrentCulture"] != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator = " ";
+                Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator = ".";
+            }
         }
 
 

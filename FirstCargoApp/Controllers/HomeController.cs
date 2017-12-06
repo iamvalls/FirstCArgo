@@ -9,6 +9,8 @@ using System.Threading;
 using System.Globalization;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
+using System.Threading;
+using System.Globalization;
 
 
 
@@ -16,7 +18,7 @@ using Microsoft.AspNet.Identity;
 
 namespace FirstCargoApp.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
 
 
