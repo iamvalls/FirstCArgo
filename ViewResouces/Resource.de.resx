@@ -232,7 +232,7 @@
     <value>Inhalt Bechreibung</value>
   </data>
   <data name="Depth" xml:space="preserve">
-    <value>Tiefe</value>
+    <value>Tiefe(cm)</value>
   </data>
   <data name="Destination" xml:space="preserve">
     <value>Bestimmungsort</value>
@@ -244,16 +244,16 @@
     <value>Bitte geben Sie die Farhzeugident. Nr ein.</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>Höhe</value>
+    <value>Höhe(cm)</value>
   </data>
   <data name="Length" xml:space="preserve">
-    <value>Länge</value>
+    <value>Länge(cm)</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Bezahlt</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Preise</value>
+    <value>Preise(€)</value>
   </data>
   <data name="RecieverAddress" xml:space="preserve">
     <value>Empfger Anschrift</value>
@@ -274,7 +274,7 @@
     <value>Absender Tel Nr</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Breite</value>
+    <value>Breite(cm)</value>
   </data>
   <data name="EmailAddressRequired" xml:space="preserve">
     <value>Ungültige Email Adress</value>
@@ -407,5 +407,8 @@
   </data>
   <data name="DigitRequired" xml:space="preserve">
     <value>Bitte Nummer eingeben.</value>
+  </data>
+  <data name="PasswordRules" xml:space="preserve">
+    <value>Das Kennwort muss mindestens ein Großbuchstabe und ein Sonderzeichen aben</value>
   </data>
 </root>

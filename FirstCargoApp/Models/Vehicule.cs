@@ -20,6 +20,7 @@ namespace FirstCargoApp.Models
         [Required(ErrorMessageResourceName = "SenderNameRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string senderName { get; set; }
         [Display(Name = "SenderAdress", ResourceType = typeof(ViewResources.Resource))]
+        [Required(ErrorMessageResourceName = "SenderAdressRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string senderAdress { get; set; }
         [Display(Name = "SenderPhoneNumber", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "SenderPhoneNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
@@ -40,7 +41,6 @@ namespace FirstCargoApp.Models
         [Display(Name = "Price", ResourceType = typeof(ViewResources.Resource))]
         [DataType(DataType.Currency)]
         [Required(ErrorMessageResourceName = "PriceRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
-
         public Nullable<decimal> price { get; set; }
         [Display(Name = "Paid", ResourceType = typeof(ViewResources.Resource))]
         public bool paid { get; set; }

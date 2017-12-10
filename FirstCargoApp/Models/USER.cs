@@ -54,12 +54,16 @@ namespace FirstCargoApp.Models
         public string oldPassword { get; set; }
         [DataType(DataType.Password)]
         [Required(ErrorMessageResourceName = "ConfirmPasswordRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
-        //[Compare("NewPassword", ErrorMessage = "Das neue Kennwort stimmt nicht mit dem Bestätigungskennwort überein.")]
+        [Compare("newPassword", ErrorMessage = "Das neue Kennwort stimmt nicht mit dem Bestätigungskennwort überein.")]
         [Display(Name = "ConfirmPassword", ResourceType = typeof(ViewResources.Resource))]
+        [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^.*(?=.*[!@#$%^&*\(\)_\-+=]).*$", ErrorMessageResourceName = "PasswordRules", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string confirmPassword { get; set; }
         [DataType(DataType.Password)]
         [Required(ErrorMessageResourceName = "NewPasswordRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         [Display(Name = "NewPassword", ResourceType = typeof(ViewResources.Resource))]
+        [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^.*(?=.*[!@#$%^&*\(\)_\-+=]).*$", ErrorMessageResourceName = "PasswordRules", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string newPassword { get; set; }
         [Display(Name = "Email")]
         [Required(ErrorMessage = "EmailRequired")]

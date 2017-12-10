@@ -235,7 +235,7 @@
     <value>ContentDescription</value>
   </data>
   <data name="Depth" xml:space="preserve">
-    <value>Depth</value>
+    <value>Depth(cm)</value>
   </data>
   <data name="Destination" xml:space="preserve">
     <value>Destination</value>
@@ -247,16 +247,16 @@
     <value>Please Enter the Frame Number</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>Height</value>
+    <value>Height(cm)</value>
   </data>
   <data name="Length" xml:space="preserve">
-    <value>Length</value>
+    <value>Length(cm)</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Paid</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Price</value>
+    <value>Price(€)</value>
   </data>
   <data name="RecieverAddress" xml:space="preserve">
     <value>Reciever Address</value>
@@ -277,7 +277,7 @@
     <value>Sender Phone Number</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
+    <value>Weight(cm)</value>
   </data>
   <data name="EmailAddressRequired" xml:space="preserve">
     <value>Invalid Email Address</value>
@@ -413,5 +413,8 @@
   </data>
   <data name="DigitRequired" xml:space="preserve">
     <value>Please enter Digit.</value>
+  </data>
+  <data name="PasswordRules" xml:space="preserve">
+    <value>The Password must at least a Big characters and a special Sign.</value>
   </data>
 </root>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meine ASP.NET-Anwendung</title>
+    <title>@ViewResources.Resource.Anwendungsname</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -20,7 +20,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink(@ViewResources.Resource.Anwendungsname, "Index", "Home", null, new { @class = "navbar-brand" })
+                <p class="navbar-brand">@ViewResources.Resource.Anwendungsname</p>
+
+                
+                <link rel="logo" type="image/ico" href="\favicon.ico" />
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -43,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Copyright First Cargo Mannheim </p>
+            <p>&copy; @DateTime.Now.Year - Copyright First Cargo Mannheim    Version: @ViewContext.Controller.GetType().Assembly.GetName().Version </p>
         </footer>
     </div>
 

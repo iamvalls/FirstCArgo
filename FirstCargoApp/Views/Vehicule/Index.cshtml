@@ -100,9 +100,6 @@
             @Html.DisplayFor(modelItem => item.paid)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.frameNumber)
-        </td>
-        <td>
             @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |
             @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id = item.vehiculeID }) |
             @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id = item.vehiculeID })

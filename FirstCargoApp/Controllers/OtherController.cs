@@ -48,9 +48,9 @@ namespace FirstCargoApp.Controllers
                                        || s.recieverName.Contains(searchString)).ToList();
             }
 
-            // In case there is no entry
-            if(others.Count ==0)
-                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.NoEntryFound });
+            //// In case there is no entry
+            //if(others.Count ==0)
+            //    return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.NoEntryFound });
 
             // Viewbag for Sort
 

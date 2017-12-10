@@ -214,7 +214,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Depth ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Depth(cm) ähnelt.
         /// </summary>
         public static string Depth {
             get {
@@ -358,7 +358,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Height ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Height(cm) ähnelt.
         /// </summary>
         public static string Height {
             get {
@@ -403,7 +403,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Length ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Length(cm) ähnelt.
         /// </summary>
         public static string Length {
             get {
@@ -619,7 +619,16 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Price ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Password must at least a Big characters and a special Sign. ähnelt.
+        /// </summary>
+        public static string PasswordRules {
+            get {
+                return ResourceManager.GetString("PasswordRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Price(€) ähnelt.
         /// </summary>
         public static string Price {
             get {
@@ -925,7 +934,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Weight ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Weight(cm) ähnelt.
         /// </summary>
         public static string Weight {
             get {
