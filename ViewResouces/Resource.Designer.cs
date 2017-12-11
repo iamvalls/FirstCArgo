@@ -412,6 +412,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log as ähnelt.
+        /// </summary>
+        public static string LogedAs {
+            get {
+                return ResourceManager.GetString("LogedAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Login ähnelt.
         /// </summary>
         public static string Login {

@@ -208,7 +208,7 @@ namespace FirstCargoApp.Controllers
                     // Todo Log the error
                 }
 
-                return RedirectToAction("Index", "Vehicule");
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.RecordSuccess });
             }
 
             return View(vehicule);

@@ -417,4 +417,7 @@
   <data name="PasswordRules" xml:space="preserve">
     <value>The Password must at least a Big characters and a special Sign.</value>
   </data>
+  <data name="LogedAs" xml:space="preserve">
+    <value>Log as</value>
+  </data>
 </root>

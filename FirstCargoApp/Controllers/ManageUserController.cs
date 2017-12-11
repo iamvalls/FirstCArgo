@@ -45,10 +45,10 @@ namespace FirstCargoApp.Controllers
                 : message == NotificationMessage.ManageMessageId.Error ? @ViewResources.Resource.Error
                 : message == NotificationMessage.ManageMessageId.NoEntryFound ? @ViewResources.Resource.NoEntryFound
                 : "";
-            
+
             ViewBag.ReturnUrl = Url.Action("ManageUser");
 
-            
+
             return View();
         }
 
@@ -61,68 +61,78 @@ namespace FirstCargoApp.Controllers
 
             ViewBag.ReturnUrl = Url.Action("ManageUser");
 
-                // Remove the useles data column because we dont#t need them to Change the password
-                ModelState.Remove("password");
-                ModelState.Remove("userName");
-                ModelState.Remove("userID");
-                ModelState.Remove("email");
+            // Remove the useles data column because we dont#t need them to Change the password
+            ModelState.Remove("password");
+            ModelState.Remove("userName");
+            ModelState.Remove("userID");
+            ModelState.Remove("email");
 
-                int userId = user.userID;
+            int userId = user.userID;
 
-                var errors3 = ModelState
-    .Where(x => x.Value.Errors.Count > 0)
-    .Select(x => new { x.Key, x.Value.Errors })
-    .ToArray();
+            //            var errors3 = ModelState
+            //.Where(x => x.Value.Errors.Count > 0)
+            //.Select(x => new { x.Key, x.Value.Errors })
+            //.ToArray();
 
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                // Set obligated User Property before updated the changes 
+                user.password = user.newPassword;
+                user.userName = User.Identity.GetUserName().Split('|')[0].ToString();
+                user.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                using (FirstCargoDbEntities entities = new FirstCargoDbEntities())
                 {
-                    // Set obligated User Property before updated the changes 
-                    user.password = user.newPassword;
-                    user.userName = User.Identity.GetUserName().Split('|')[0].ToString();
-                    user.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
-                    using (FirstCargoDbEntities entities = new FirstCargoDbEntities())
-                    {
-                        USER userToUpdate = entities.USER.SingleOrDefault(u => u.userName == user.userName);
-                        var hashCode = userToUpdate.vCode;
-                        //Password Hasing Process Call Helper Class Method    
-                        var encodingPasswordString = RegistrationLoginHelper.EncodePassword(user.oldPassword, hashCode);
+                    USER userToUpdate = entities.USER.SingleOrDefault(u => u.userName == user.userName);
+                    var hashCode = userToUpdate.vCode;
+                    //Password Hasing Process Call Helper Class Method    
+                    var encodingPasswordString = RegistrationLoginHelper.EncodePassword(user.oldPassword, hashCode);
 
-                        if (encodingPasswordString.Equals(userToUpdate.password))
+                    if (encodingPasswordString.Equals(userToUpdate.password))
+                    {
+
+                        //Check Login Detail User Name Or Password    
+                        var query = (from s in entities.USER where (s.userName == user.userName || s.email == user.userName) && s.password.Equals(encodingPasswordString) select s).FirstOrDefault();
+
+                        if (query != null)
                         {
 
-                            //Check Login Detail User Name Or Password    
-                            var query = (from s in entities.USER where (s.userName == user.userName || s.email == user.userName) && s.password.Equals(encodingPasswordString) select s).FirstOrDefault();
 
-                            if(query != null){
+                            var password = RegistrationLoginHelper.EncodePassword(user.newPassword, hashCode);
+                            userToUpdate.oldPassword = userToUpdate.password;
+                            userToUpdate.password = userToUpdate.newPassword = userToUpdate.confirmPassword = password;
+                            userToUpdate.passwordChangedDates = DateTime.Now;
 
-        
-                                var password = RegistrationLoginHelper.EncodePassword(user.newPassword, hashCode);
-                                userToUpdate.oldPassword = userToUpdate.password;
-                                userToUpdate.password = userToUpdate.newPassword = userToUpdate.confirmPassword =password;
-                                userToUpdate.passwordChangedDates = DateTime.Now;
-
-                                db.Entry(userToUpdate).State = EntityState.Modified;
-                                try
-                                {
-                                    await db.SaveChangesAsync();
-                                }
-                                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-                                {
-                                    // Todo Log the error
-                                }
+                            db.Entry(userToUpdate).State = EntityState.Modified;
+                            try
+                            {
+                                await db.SaveChangesAsync();
                             }
-
+                            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                            {
+                                // Todo Log the error
+                            }
                         }
+
                     }
-                    return RedirectToAction("ManageUser", new { Message = NotificationMessage.ManageMessageId.ChangePasswordSuccess });
                 }
-           // how form again if there is a failure
+                return RedirectToAction("ManageUser", new { Message = NotificationMessage.ManageMessageId.ChangePasswordSuccess });
+            }
+            // how form again if there is a failure
             return View(user);
         }
 
         // GET: /ManageUser/ Show the list of User
-        public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message,string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.StatusMessage =
+                message == NotificationMessage.ManageMessageId.ChangePasswordSuccess ? @ViewResources.Resource.ChangePasswordSuccess
+                : message == NotificationMessage.ManageMessageId.Error ? @ViewResources.Resource.Error
+                : message == NotificationMessage.ManageMessageId.NoEntryFound ? @ViewResources.Resource.NoEntryFound
+                : "";
+
+            ViewBag.ReturnUrl = Url.Action("ManageUser");
+
             // Get all entries from DB
             var users = await db.USER.ToListAsync();
 
@@ -230,17 +240,17 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,email")] USER user)
+        public async Task<ActionResult> Create([Bind(Include = "userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,email")] USER user)
         {
             // Remove the useles data column because we dont#t need them to Change the password
             ModelState.Remove("oldPassword");
             ModelState.Remove("confirmPassword");
             ModelState.Remove("newPassword");
 
-                        var errors3 = ModelState
-            .Where(x => x.Value.Errors.Count > 0)
-            .Select(x => new { x.Key, x.Value.Errors })
-            .ToArray(); // This has to be remove later
+            var errors3 = ModelState
+.Where(x => x.Value.Errors.Count > 0)
+.Select(x => new { x.Key, x.Value.Errors })
+.ToArray(); // This has to be remove later
 
             if (ModelState.IsValid)
             {
@@ -248,47 +258,52 @@ namespace FirstCargoApp.Controllers
                 {
 
                     var chkUser = (from s in db.USER where s.userName == user.userName || s.email == user.email select s).FirstOrDefault();
-                if (chkUser == null)
-                {
-                    var keyNew = RegistrationLoginHelper.GeneratePassword(10);
-                    var password = RegistrationLoginHelper.EncodePassword(user.password, keyNew);
-                    user.password = password;
-                    user.createdDate = DateTime.Now;
-                    user.vCode = keyNew;
-                    //because they donot appear to the view we need to initiliaze them 
-                    // Set obligated User Property before updated the changes 
-                    user.oldPassword = user.password;
-                    user.newPassword = user.password;
-                    user.confirmPassword = user.password;
-                    user.createdDate = DateTime.Now;
-                    user.confirmationToken = "";
-                    user.isConfirmed = false;
- 
-                    db.USER.Add(user);
-                    await db.SaveChangesAsync();
-                    //return RedirectToAction("LogIn", "Login");
-                }
-                ViewBag.ErrorMessage = "User Allredy Exixts!!!!!!!!!!"; 
-}catch (System.Data.Entity.Validation.DbEntityValidationException dbEx){
-                        Exception raise = dbEx;
-                        foreach (var validationErrors in dbEx.EntityValidationErrors)
-                        {
-                            foreach (var validationError in validationErrors.ValidationErrors)
-                            {
-                                string message = string.Format("{0}:{1}",
-                                    validationErrors.Entry.Entity.ToString(),
-                                    validationError.ErrorMessage);
-                                // raise a new exception nesting
-                                // the current instance as InnerException
-                                raise = new InvalidOperationException(message, raise);
-                            }
-                        }
-                        throw raise;
+                    if (chkUser == null)
+                    {
+                        var keyNew = RegistrationLoginHelper.GeneratePassword(10);
+                        var password = RegistrationLoginHelper.EncodePassword(user.password, keyNew);
+                        user.password = password;
+                        user.createdDate = DateTime.Now;
+                        user.vCode = keyNew;
+                        //because they donot appear to the view we need to initiliaze them 
+                        // Set obligated User Property before updated the changes 
+                        user.oldPassword = user.password;
+                        user.newPassword = user.password;
+                        user.confirmPassword = user.password;
+                        user.createdDate = DateTime.Now;
+                        user.confirmationToken = "";
+                        user.isConfirmed = false;
 
-                        //Todo Log the exception
+                        db.USER.Add(user);
+                        await db.SaveChangesAsync();
+                        //return RedirectToAction("LogIn", "Login");
                     }
-                
-                return RedirectToAction("Index","ManageUser");
+                    else
+                    {
+                        return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.Error });
+                    }
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting
+                            // the current instance as InnerException
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+
+                    //Todo Log the exception
+                }
+
+                return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.RecordSuccess });
             }
 
             return View(user);
@@ -316,7 +331,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="userID,userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,createdDate,confirmationToken,isConfirmed,lastPasstWortFailuresDates,passwordFailuresDateSinceLastSuccess,passwordChangedDates,passwordSalt,passwordVerificationToken,passwordVerificationTokenExprirationDate")] USER user)
+        public async Task<ActionResult> Edit([Bind(Include = "userID,userName,userFirstName,userLastName,dateOfBirth,password,isAdmin,createdDate,confirmationToken,isConfirmed,lastPasstWortFailuresDates,passwordFailuresDateSinceLastSuccess,passwordChangedDates,passwordSalt,passwordVerificationToken,passwordVerificationTokenExprirationDate")] USER user)
         {
             // Remove the useles data column because we dont#t need them to edit the User. They dont apear on the view
             ModelState.Remove("confirmPassword");
@@ -352,7 +367,7 @@ namespace FirstCargoApp.Controllers
 
                     //Todo Log exception
                 }
-                
+
                 return RedirectToAction("Index", "ManageUser");
             }
             return View(user);
@@ -390,11 +405,11 @@ namespace FirstCargoApp.Controllers
 
                 //Todo Log exception
             }
-            
+
             return RedirectToAction("Index", "ManageUser");
         }
 
-        
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());

@@ -346,7 +346,7 @@
     <value>Eintrag erfolgreich bearbeitet</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Fehler</value>
+    <value>Benutzername oder Email bereits vorhanden</value>
   </data>
   <data name="RecordSuccess" xml:space="preserve">
     <value>Eintrag erfolgreich angelegt</value>
@@ -410,5 +410,8 @@
   </data>
   <data name="PasswordRules" xml:space="preserve">
     <value>Das Kennwort muss mindestens ein Großbuchstabe und ein Sonderzeichen aben</value>
+  </data>
+  <data name="LogedAs" xml:space="preserve">
+    <value>Angemeldet als </value>
   </data>
 </root>
