@@ -12,7 +12,7 @@ namespace FirstCargoApp.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Other
     {
         public int otherID { get; set; }
@@ -69,6 +69,7 @@ namespace FirstCargoApp.Models
         [Display(Name = "RecieverEmail", ResourceType = typeof(ViewResources.Resource))]
         [EmailAddress(ErrorMessage = "EmailAddressRequired")]
         public string recieverEmail { get; set; }
-  
+        public string orderNumber { get; set; }
+
     }
 }

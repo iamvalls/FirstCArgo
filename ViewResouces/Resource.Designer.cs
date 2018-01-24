@@ -214,7 +214,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Depth(cm) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cubic meter(cm) ähnelt.
         /// </summary>
         public static string Depth {
             get {
@@ -336,6 +336,24 @@ namespace ViewResources {
         public static string FrameNumber {
             get {
                 return ResourceManager.GetString("FrameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  The Framenumber must be 17 characters long. ähnelt.
+        /// </summary>
+        public static string FrameNumberLength {
+            get {
+                return ResourceManager.GetString("FrameNumberLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Framenumber kann only have Letters and Numbers ähnelt.
+        /// </summary>
+        public static string FrameNumberPattern {
+            get {
+                return ResourceManager.GetString("FrameNumberPattern", resourceCulture);
             }
         }
         
@@ -556,7 +574,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Package ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Groupage ähnelt.
         /// </summary>
         public static string Package {
             get {
@@ -565,7 +583,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Package Records ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Groupage Records ähnelt.
         /// </summary>
         public static string PackageRecords {
             get {
@@ -574,7 +592,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Package Type ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Groupage Type ähnelt.
         /// </summary>
         public static string PackageType {
             get {
@@ -583,7 +601,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please enter a Package Type ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please enter a Groupage Type ähnelt.
         /// </summary>
         public static string PackageTypeRequired {
             get {

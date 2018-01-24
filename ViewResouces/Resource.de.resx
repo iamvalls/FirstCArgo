@@ -232,7 +232,7 @@
     <value>Inhalt Bechreibung</value>
   </data>
   <data name="Depth" xml:space="preserve">
-    <value>Tiefe(cm)</value>
+    <value>Kubikmeter(cm)</value>
   </data>
   <data name="Destination" xml:space="preserve">
     <value>Bestimmungsort</value>
@@ -307,10 +307,10 @@
     <value>Andere Einträge</value>
   </data>
   <data name="Package" xml:space="preserve">
-    <value>Karton</value>
+    <value>Gruppierung</value>
   </data>
   <data name="PackageRecords" xml:space="preserve">
-    <value>Cartons Einträge</value>
+    <value>Gruppierung Einträge</value>
   </data>
   <data name="Vehicule" xml:space="preserve">
     <value>PKW</value>
@@ -334,7 +334,7 @@
     <value>Andere Typ</value>
   </data>
   <data name="PackageType" xml:space="preserve">
-    <value>Paket Typ</value>
+    <value>Gruppierung Typ</value>
   </data>
   <data name="ChangePasswordSuccess" xml:space="preserve">
     <value>Ihr Kennwort wurde geändert.</value>
@@ -358,7 +358,7 @@
     <value>Bitte Ziel eingeben</value>
   </data>
   <data name="PackageTypeRequired" xml:space="preserve">
-    <value>Bitte Paket Art eingeben</value>
+    <value>Bitte Gruppierung Art eingeben</value>
   </data>
   <data name="RecieverNameRequired" xml:space="preserve">
     <value>Bitte Empfänger Name eingeben</value>
@@ -413,5 +413,11 @@
   </data>
   <data name="LogedAs" xml:space="preserve">
     <value>Angemeldet als </value>
+  </data>
+  <data name="FrameNumberLength" xml:space="preserve">
+    <value>Die Frarhzeugident Nr muss 17 zeichen lang sein.</value>
+  </data>
+  <data name="FrameNumberPattern" xml:space="preserve">
+    <value>Die Frarhzeugident und kann nur aus Buchstaben und Ziffern bestehen.</value>
   </data>
 </root>

@@ -235,7 +235,7 @@
     <value>ContentDescription</value>
   </data>
   <data name="Depth" xml:space="preserve">
-    <value>Depth(cm)</value>
+    <value>Cubic meter(cm)</value>
   </data>
   <data name="Destination" xml:space="preserve">
     <value>Destination</value>
@@ -310,10 +310,10 @@
     <value>Other Records</value>
   </data>
   <data name="Package" xml:space="preserve">
-    <value>Package</value>
+    <value>Groupage</value>
   </data>
   <data name="PackageRecords" xml:space="preserve">
-    <value>Package Records</value>
+    <value>Groupage Records</value>
   </data>
   <data name="Vehicule" xml:space="preserve">
     <value>Vehicule</value>
@@ -337,7 +337,7 @@
     <value>Other Type</value>
   </data>
   <data name="PackageType" xml:space="preserve">
-    <value>Package Type</value>
+    <value>Groupage Type</value>
   </data>
   <data name="ChangePasswordSuccess" xml:space="preserve">
     <value>Password Successfully change</value>
@@ -361,7 +361,7 @@
     <value>Please enter the destination</value>
   </data>
   <data name="PackageTypeRequired" xml:space="preserve">
-    <value>Please enter a Package Type</value>
+    <value>Please enter a Groupage Type</value>
   </data>
   <data name="RecieverNameRequired" xml:space="preserve">
     <value>Please enter the name of the reciever number</value>
@@ -419,5 +419,11 @@
   </data>
   <data name="LogedAs" xml:space="preserve">
     <value>Log as</value>
+  </data>
+  <data name="FrameNumberLength" xml:space="preserve">
+    <value> The Framenumber must be 17 characters long.</value>
+  </data>
+  <data name="FrameNumberPattern" xml:space="preserve">
+    <value>The Framenumber kann only have Letters and Numbers</value>
   </data>
 </root>

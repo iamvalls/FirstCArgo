@@ -189,6 +189,10 @@ namespace FirstCargoApp.Controllers
             if (ModelState.IsValid)
             {
                 package.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                if (package.senderEmail.Equals(""))
+                {
+                    package.senderEmail = "first-cargo-mannheim@outlook.de";
+                }
                 db.Package.Add(package);
                 try
                 {

@@ -207,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\DecimalModelBinder.cs" />
+    <Compile Include="Helper\EnumClass.cs" />
     <Compile Include="Helper\LocalisationHelper.cs" />
     <Compile Include="Helper\NotificationMessage.cs" />
     <Compile Include="Helper\PlaceHolderAttribute.cs" />
@@ -276,7 +277,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\Elie T.pubxml" />
     <None Include="Properties\PublishProfiles\FirstCarco.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

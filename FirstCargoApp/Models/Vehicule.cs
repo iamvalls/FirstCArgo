@@ -45,31 +45,35 @@ namespace FirstCargoApp.Models
         [Display(Name = "Paid", ResourceType = typeof(ViewResources.Resource))]
         public bool paid { get; set; }
         [Display(Name = "Weight", ResourceType = typeof(ViewResources.Resource))]
-
+        [RegularExpression(@"[0-9]{0,}\.[0-9]{2}", ErrorMessage = "error Message")] 
         public Nullable<decimal> weight { get; set; }
         [Display(Name = "Height", ResourceType = typeof(ViewResources.Resource))]
+        [RegularExpression(@"[0-9]{0,}\.[0-9]{2}", ErrorMessage = "error Message")] 
         public Nullable<decimal> height { get; set; }
         [Display(Name = "Length", ResourceType = typeof(ViewResources.Resource))]
+        [RegularExpression(@"[0-9]{0,}\.[0-9]{2}", ErrorMessage = "error Message")] 
         public Nullable<decimal> length { get; set; }
         [Display(Name = "Depth", ResourceType = typeof(ViewResources.Resource))]
+        [RegularExpression(@"[0-9]{0,}\.[0-9]{2}", ErrorMessage = "error Message")] 
         public Nullable<decimal> depth { get; set; }
-        [Display(Name = "ContentDescription", ResourceType = typeof(ViewResources.Resource))]
-        [DataType(DataType.MultilineText)]
-        public string contentDescription { get; set; }
         public Nullable<int> userID { get; set; }
         [Display(Name = "VehiculeType", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "VehiculeTypeRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string vehiculeType { get; set; }
         [Display(Name = "FrameNumber", ResourceType = typeof(ViewResources.Resource))]
         [Required(ErrorMessageResourceName = "FrameNumberRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
-        [Range(17, 17)]
+        [StringLength(17, ErrorMessageResourceName = "FrameNumberLength", MinimumLength = 17, ErrorMessageResourceType = typeof(ViewResources.Resource))]
+        [RegularExpression(@"^[a-zA-Z0-9]*$", ErrorMessageResourceName = "FrameNumberPattern", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         public string frameNumber { get; set; }
         [Display(Name = "SenderEmail", ResourceType = typeof(ViewResources.Resource))]
-        [Required(ErrorMessageResourceName = "EmailAddressRequired", ErrorMessageResourceType = typeof(ViewResources.Resource))]
         [EmailAddress(ErrorMessage = "EmailAddressRequired")]
         public string senderEmail { get; set; }
         [Display(Name = "RecieverEmail", ResourceType = typeof(ViewResources.Resource))]
         [EmailAddress(ErrorMessage = "EmailAddressRequired")]
         public string recieverEmail { get; set; }
+        public string orderNumber { get; set; }
+
     }
 }
+
+

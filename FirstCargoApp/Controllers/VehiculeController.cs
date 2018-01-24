@@ -191,13 +191,17 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
 
             if (ModelState.IsValid)
             {
                 vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                if (vehicule.senderEmail.Equals(""))
+                {
+                    vehicule.senderEmail = "first-cargo-mannheim@outlook.de";
+                }
                 db.Vehicule.Add(vehicule);
                 try
                 {
@@ -234,7 +238,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
 
