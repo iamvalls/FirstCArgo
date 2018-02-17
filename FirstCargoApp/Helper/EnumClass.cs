@@ -5,13 +5,13 @@ using System.Web;
 
 namespace FirstCargoApp.Helper
 {
-    public class EnumClass
-    {
+  
         public enum Paid
         {
-            Yes,
-            No
+            Yes = 1 ,
+            No = 2  ,
+            NotComplete= 3,
         }
-
-    }
+    
+    
 }

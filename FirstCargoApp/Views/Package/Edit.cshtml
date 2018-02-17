@@ -107,11 +107,31 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.paid, new { style = "width: 200px" })
+                @Html.ValidationMessageFor(model => model.paid)
+            </div>
+        </div>*@
+
         <div class="form-group">
             @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.paid, new { style = "width: 200px" })
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.alreadyPaid, new { style = "width: 200px" })
+
                 @Html.ValidationMessageFor(model => model.paid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paidRest, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paidRest, new { style = "width: 500px" })
+                @Html.ValidationMessageFor(model => model.paidRest)
+                @{ Html.EnableClientValidation(true); }
+
             </div>
         </div>
 

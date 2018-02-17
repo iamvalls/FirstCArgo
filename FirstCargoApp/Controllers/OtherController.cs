@@ -187,13 +187,15 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Other other)
+        public async Task<ActionResult> Create([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Other other)
         {
             ViewBag.ReturnUrl = Url.Action("Other");
 
             if (ModelState.IsValid)
             {
                 other.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                other.createdDate = DateTime.Now;
+                other.paidRest = other.price - other.alreadyPaid;
                 if (other.senderEmail.Equals(""))
                 {
                     other.senderEmail = "first-cargo-mannheim@outlook.de";
@@ -233,7 +235,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmailsenderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Other other)
+        public async Task<ActionResult> Edit([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Other other)
         {
             ViewBag.ReturnUrl = Url.Action("Other");
 

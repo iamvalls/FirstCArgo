@@ -24,32 +24,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink(ViewResources.Resource.VehiculeType, "Index", new { sortOrder = ViewBag.VehiculeTypeSortParm })
+            @Html.ActionLink(ViewResources.Resource.CreatedDate, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
         </th>
+
         <th>
             @Html.ActionLink(ViewResources.Resource.SenderName, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
         </th>
         <th>
-            @Html.ActionLink(ViewResources.Resource.SenderAdress, "Index", new { sortOrder = ViewBag.SenderAdressSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.SenderEmail, "Index", new { sortOrder = ViewBag.SenderEmailSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.SenderPhoneNumber, "Index", new { sortOrder = ViewBag.SenderPhoneNumberSortParm })
-        </th>
-        <th>
             @Html.ActionLink(ViewResources.Resource.RecieverName, "Index", new { sortOrder = ViewBag.RecieverNameSortParm })
         </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.RecieverAdress, "Index", new { sortOrder = ViewBag.RecieverAdressSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.RecieverEmail, "Index", new { sortOrder = ViewBag.RecieverEmailSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.RecieverPhoneNumber, "Index", new { sortOrder = ViewBag.RecieverPhoneNumberSortParm })
-        </th>
+        
         <th>
             @Html.ActionLink(ViewResources.Resource.Destination, "Index", new { sortOrder = ViewBag.DestinationSortParm })
         </th>
@@ -59,36 +43,26 @@
         <th>
             @Html.ActionLink(ViewResources.Resource.Paid, "Index", new { sortOrder = ViewBag.PaidSortParm })
         </th>
+        <th>
+            @Html.ActionLink(ViewResources.Resource.RestToPay, "Index", new { sortOrder = ViewBag.PaidSortParm })
+        </th>
+        <th>
+            @Html.ActionLink(ViewResources.Resource.FrameNumber, "Index", new { sortOrder = ViewBag.FrameNumberSortParm })
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+
         <td>
-            @Html.DisplayFor(modelItem => item.vehiculeType)
+            @Html.DisplayFor(modelItem => item.createdDate)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.senderName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.senderAdress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.senderEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.senderPhoneNumber)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.recieverName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recieverAdress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recieverEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recieverPhoneNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.destination)
@@ -97,7 +71,13 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.paid)
+            @Html.DisplayFor(modelItem => item.alreadyPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paidRest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frameNumber)
         </td>
         <td>
             @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |

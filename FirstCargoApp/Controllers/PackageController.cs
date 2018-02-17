@@ -182,13 +182,15 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Package package)
+        public async Task<ActionResult> Create([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Package package)
         {
             ViewBag.ReturnUrl = Url.Action("Package");
 
             if (ModelState.IsValid)
             {
                 package.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                package.createdDate = DateTime.Now;
+                package.paidRest = package.price - package.alreadyPaid;
                 if (package.senderEmail.Equals(""))
                 {
                     package.senderEmail = "first-cargo-mannheim@outlook.de";
@@ -228,7 +230,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,contentDescription,userID")] Package package)
+        public async Task<ActionResult> Edit([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Package package)
         {
             ViewBag.ReturnUrl = Url.Action("Package");
 

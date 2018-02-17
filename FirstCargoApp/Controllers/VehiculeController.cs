@@ -46,6 +46,12 @@ namespace FirstCargoApp.Controllers
                 vehicules = vehicules.Where(s => s.senderName.Contains(searchString)
                                        || s.recieverName.Contains(searchString)).ToList();
             }
+            // Show only the last 6 digit of the Frame number
+            for (int i = 0; i < vehicules.Count(); i++)
+            {
+                if (vehicules[i].frameNumber.Length == 17)
+                vehicules[i].frameNumber = vehicules[i].frameNumber.Substring(11, 6);
+            }
 
             //// In case there is no entry
             //if (vehicules.Count == 0)
@@ -191,13 +197,16 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
 
             if (ModelState.IsValid)
             {
                 vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
+                vehicule.createdDate = DateTime.Now;
+                vehicule.paidRest = vehicule.price - vehicule.alreadyPaid;
+                
                 if (vehicule.senderEmail.Equals(""))
                 {
                     vehicule.senderEmail = "first-cargo-mannheim@outlook.de";
@@ -238,7 +247,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
 

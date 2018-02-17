@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FirstCargoDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FirstCargoDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Other">
           <Key>
             <PropertyRef Name="otherID" />
@@ -28,7 +28,11 @@
           <Property Name="userID" Type="int" />
           <Property Name="senderEmail" Type="varchar" MaxLength="255" />
           <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
-          <Property Name="orderNumber" Type="nchar" MaxLength="255" />
+          <Property Name="orderNumber" Type="varchar" MaxLength="50" />
+          <Property Name="paidTextID" Type="int" />
+          <Property Name="paidRest" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="alreadyPaid" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -53,7 +57,11 @@
           <Property Name="userID" Type="int" Nullable="false" />
           <Property Name="senderEmail" Type="varchar" MaxLength="255" />
           <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
-          <Property Name="orderNumber" Type="nchar" MaxLength="255" />
+          <Property Name="orderNumber" Type="varchar" MaxLength="50" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="paidTextID" Type="int" />
+          <Property Name="paidRest" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="alreadyPaid" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -99,12 +107,16 @@
           <Property Name="height" Type="decimal" Precision="18" Scale="2" />
           <Property Name="length" Type="decimal" Precision="18" Scale="2" />
           <Property Name="depth" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="orderNumber" Type="varchar" MaxLength="255" />
+          <Property Name="orderNumber" Type="varchar" MaxLength="50" />
           <Property Name="userID" Type="int" />
           <Property Name="vehiculeType" Type="varchar" MaxLength="255" />
           <Property Name="frameNumber" Type="varchar" MaxLength="255" />
           <Property Name="senderEmail" Type="varchar" MaxLength="255" />
           <Property Name="recieverEmail" Type="varchar" MaxLength="255" />
+          <Property Name="paidTextID" Type="int" />
+          <Property Name="paidRest" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="alreadyPaid" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityContainer Name="FirstCargoDbModelStoreContainer">
           <EntitySet Name="Other" EntityType="Self.Other" Schema="dbo" store:Type="Tables" />
@@ -112,8 +124,7 @@
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehicule" EntityType="Self.Vehicule" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FirstCargoDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -140,7 +151,11 @@
           <Property Name="userID" Type="Int32" />
           <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="orderNumber" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="orderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paidTextID" Type="FirstCargoDbModel.Paid" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="paidRest" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="alreadyPaid" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -165,7 +180,11 @@
           <Property Name="userID" Type="Int32" Nullable="false" />
           <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="orderNumber" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="orderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="paidTextID" Type="FirstCargoDbModel.Paid" />
+          <Property Name="paidRest" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="alreadyPaid" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -211,12 +230,16 @@
           <Property Name="height" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="length" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="depth" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="orderNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="orderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="userID" Type="Int32" />
           <Property Name="vehiculeType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="frameNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="senderEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="recieverEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="paidTextID" Type="FirstCargoDbModel.Paid" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="paidRest" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="alreadyPaid" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityContainer Name="FirstCargoDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Other" EntityType="Self.Other" />
@@ -224,6 +247,7 @@
           <EntitySet Name="USER" EntityType="Self.USER" />
           <EntitySet Name="Vehicule" EntityType="Self.Vehicule" />
         </EntityContainer>
+        <EnumType Name="Paid" a:ExternalTypeName="FirstCargoApp.Helper.Paid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -233,6 +257,10 @@
           <EntitySetMapping Name="Other">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Other">
               <MappingFragment StoreEntitySet="Other">
+                <ScalarProperty Name="alreadyPaid" ColumnName="alreadyPaid" />
+                <ScalarProperty Name="paidRest" ColumnName="paidRest" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="paidTextID" ColumnName="paidTextID" />
                 <ScalarProperty Name="otherID" ColumnName="otherID" />
                 <ScalarProperty Name="otherType" ColumnName="otherType" />
                 <ScalarProperty Name="senderName" ColumnName="senderName" />
@@ -259,6 +287,10 @@
           <EntitySetMapping Name="Package">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Package">
               <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="alreadyPaid" ColumnName="alreadyPaid" />
+                <ScalarProperty Name="paidRest" ColumnName="paidRest" />
+                <ScalarProperty Name="paidTextID" ColumnName="paidTextID" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="packageID" ColumnName="packageID" />
                 <ScalarProperty Name="packageType" ColumnName="packageType" />
                 <ScalarProperty Name="senderName" ColumnName="senderName" />
@@ -312,6 +344,9 @@
           <EntitySetMapping Name="Vehicule">
             <EntityTypeMapping TypeName="FirstCargoDbModel.Vehicule">
               <MappingFragment StoreEntitySet="Vehicule">
+                <ScalarProperty Name="alreadyPaid" ColumnName="alreadyPaid" />
+                <ScalarProperty Name="paidRest" ColumnName="paidRest" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="vehiculeID" ColumnName="vehiculeID" />
                 <ScalarProperty Name="senderName" ColumnName="senderName" />
                 <ScalarProperty Name="senderAdress" ColumnName="senderAdress" />
@@ -332,6 +367,7 @@
                 <ScalarProperty Name="frameNumber" ColumnName="frameNumber" />
                 <ScalarProperty Name="senderEmail" ColumnName="senderEmail" />
                 <ScalarProperty Name="recieverEmail" ColumnName="recieverEmail" />
+                <ScalarProperty Name="paidTextID" ColumnName="paidTextID"  />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
