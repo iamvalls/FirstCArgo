@@ -331,7 +331,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Frame Number ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Chassis Number ähnelt.
         /// </summary>
         public static string FrameNumber {
             get {
@@ -340,7 +340,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  The Framenumber must be 17 characters long. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die  The Chassis number must be 17 characters long. ähnelt.
         /// </summary>
         public static string FrameNumberLength {
             get {
@@ -349,7 +349,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The Framenumber kann only have Letters and Numbers ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Chassis number kann only have Letters and Numbers ähnelt.
         /// </summary>
         public static string FrameNumberPattern {
             get {
@@ -511,6 +511,24 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Not All ähnelt.
+        /// </summary>
+        public static string NichtAlles {
+            get {
+                return ResourceManager.GetString("NichtAlles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No Entry Found ähnelt.
         /// </summary>
         public static string NoEntryFound {
@@ -534,6 +552,15 @@ namespace ViewResources {
         public static string OldPasswordRequired {
             get {
                 return ResourceManager.GetString("OldPasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Order Number ähnelt.
+        /// </summary>
+        public static string OrderNumber {
+            get {
+                return ResourceManager.GetString("OrderNumber", resourceCulture);
             }
         }
         
@@ -673,7 +700,34 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Address ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Generate Report ähnelt.
+        /// </summary>
+        public static string PrintOrder {
+            get {
+                return ResourceManager.GetString("PrintOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to generate the Report ähnelt.
+        /// </summary>
+        public static string PrintOrderConfirmation {
+            get {
+                return ResourceManager.GetString("PrintOrderConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Report Successfully generated ähnelt.
+        /// </summary>
+        public static string PrintOrderSuccess {
+            get {
+                return ResourceManager.GetString("PrintOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Receiver Address ähnelt.
         /// </summary>
         public static string RecieverAddress {
             get {
@@ -682,7 +736,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please Enter the Reciever Address. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please Enter the Receiver Address. ähnelt.
         /// </summary>
         public static string RecieverAddressRequired {
             get {
@@ -691,7 +745,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Adress ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Receiver Adress ähnelt.
         /// </summary>
         public static string RecieverAdress {
             get {
@@ -700,7 +754,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Email ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Receiver Email ähnelt.
         /// </summary>
         public static string RecieverEmail {
             get {
@@ -709,7 +763,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Name ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Receiver Name ähnelt.
         /// </summary>
         public static string RecieverName {
             get {
@@ -718,7 +772,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please enter the name of the reciever number ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please enter the name of the receiver number ähnelt.
         /// </summary>
         public static string RecieverNameRequired {
             get {
@@ -727,7 +781,7 @@ namespace ViewResources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reciever Phone Number ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Receiver Phone Number ähnelt.
         /// </summary>
         public static string RecieverPhoneNumber {
             get {
@@ -745,11 +799,38 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Record Number ähnelt.
+        /// </summary>
+        public static string RecordNumber {
+            get {
+                return ResourceManager.GetString("RecordNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Record successfully created ähnelt.
         /// </summary>
         public static string RecordSuccess {
             get {
                 return ResourceManager.GetString("RecordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Rest To Pay ähnelt.
+        /// </summary>
+        public static string RestToPay {
+            get {
+                return ResourceManager.GetString("RestToPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please enter the rest amount to pay ähnelt.
+        /// </summary>
+        public static string RestToPayRequired {
+            get {
+                return ResourceManager.GetString("RestToPayRequired", resourceCulture);
             }
         }
         
@@ -984,6 +1065,15 @@ namespace ViewResources {
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

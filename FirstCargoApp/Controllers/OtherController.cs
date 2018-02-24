@@ -55,6 +55,8 @@ namespace FirstCargoApp.Controllers
             // Viewbag for Sort
 
             ViewBag.SenderNameSortParm = String.IsNullOrEmpty(sortOrder) ? "sender_name_desc" : "";
+            ViewBag.OrderNumberSortParm = sortOrder == "order_number" ? "order_number_desc" : "order_number";
+            ViewBag.CreatedDateSortParm = sortOrder == "created_date" ? "created_date_desc" : "created_date";
             ViewBag.RecieverNameSortParm = sortOrder == "reciever" ? "reciever_name_desc" : "reciever";
             ViewBag.OtherTypeSortParm = sortOrder == "other_type" ? "other_type_desc" : "other_type";
             ViewBag.SenderAdressSortParm = sortOrder == "sender_adress" ? "sender_adress_desc" : "sender_adress";
@@ -81,6 +83,18 @@ namespace FirstCargoApp.Controllers
 
             switch (sortOrder)
             {
+                case "order_number":
+                    others = others.OrderByDescending(s => s.orderNumber).ToList();
+                    break;
+                case "order_number_desc":
+                    others = others.OrderBy(s => s.orderNumber).ToList();
+                    break;
+                case "created_date":
+                    others = others.OrderByDescending(s => s.createdDate).ToList();
+                    break;
+                case "created_date_desc":
+                    others = others.OrderBy(s => s.createdDate).ToList();
+                    break;
                 case "sender_name_desc":
                     others = others.OrderByDescending(s => s.senderName).ToList();
                     break;
@@ -196,6 +210,11 @@ namespace FirstCargoApp.Controllers
                 other.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                 other.createdDate = DateTime.Now;
                 other.paidRest = other.price - other.alreadyPaid;
+
+                var otherNumber = db.Other.Where(p => p.otherID != 0 && p.otherID == db.Other.Max(r => r.otherID)).SingleOrDefault();
+                int getNumber = Int32.Parse(otherNumber.orderNumber.Remove(0, 2)) + 1;
+                other.orderNumber = "OT" + getNumber;
+
                 if (other.senderEmail.Equals(""))
                 {
                     other.senderEmail = "first-cargo-mannheim@outlook.de";
@@ -288,6 +307,41 @@ namespace FirstCargoApp.Controllers
                 // Todo Log the error
             }
             return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.DeleteRecordSuccess });
+        }
+
+        // GET: /Other/PrintOrder/5
+        public async Task<ActionResult> PrintOrder(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Other other = await db.Other.FindAsync(id);
+            if (other == null)
+            {
+                return HttpNotFound();
+            }
+            return View(other);
+        }
+
+        // POST: /Other/PrintOrder/5
+        [HttpPost, ActionName("PrintOrder")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PrintOrderConfirmed(int id)
+        {
+            ViewBag.ReturnUrl = Url.Action("Other");
+
+            Other other = await db.Other.FindAsync(id);
+            //db.Other.Remove(other);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.PrintOrderSuccess });
         }
 
         //initilizing culture on controller initialization

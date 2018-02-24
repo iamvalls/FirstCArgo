@@ -387,7 +387,7 @@
   <data name="DepthRequired" xml:space="preserve">
     <value>Bitte geben Sie die Tiefe ein</value>
   </data>
-  <data name="HeigthRequired" xml:space="preserve">
+  <data name="HeightRequired" xml:space="preserve">
     <value>Bitte geben Sie die Höhe ein.</value>
   </data>
   <data name="LenghtRequired" xml:space="preserve">
@@ -419,5 +419,35 @@
   </data>
   <data name="FrameNumberPattern" xml:space="preserve">
     <value>Die Frarhzeugident und kann nur aus Buchstaben und Ziffern bestehen.</value>
+  </data>
+  <data name="NichtAlles" xml:space="preserve">
+    <value>Nicht Alles</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="RecordNumber" xml:space="preserve">
+    <value>Eintrag Nunner</value>
+  </data>
+  <data name="RestToPay" xml:space="preserve">
+    <value>Offen</value>
+  </data>
+  <data name="RestToPayRequired" xml:space="preserve">
+    <value>Offene Betrag eingeben</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>Auftrag Nummer</value>
+  </data>
+  <data name="PrintOrder" xml:space="preserve">
+    <value>Report generieren</value>
+  </data>
+  <data name="PrintOrderSuccess" xml:space="preserve">
+    <value>Auftrag erfolgreich generiert</value>
+  </data>
+  <data name="PrintOrderConfirmation" xml:space="preserve">
+    <value>Wollen Sie das Report generieren?</value>
   </data>
 </root>

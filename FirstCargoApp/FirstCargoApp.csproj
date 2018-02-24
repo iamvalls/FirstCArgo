@@ -345,6 +345,9 @@
     <Content Include="Views\Other\Details.cshtml" />
     <Content Include="Views\Other\Edit.cshtml" />
     <Content Include="Views\Other\Index.cshtml" />
+    <Content Include="Views\Vehicule\PrintOrder.cshtml" />
+    <Content Include="Views\Package\PrintOrder.cshtml" />
+    <Content Include="Views\Other\PrintOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

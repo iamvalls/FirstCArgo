@@ -58,6 +58,8 @@ namespace FirstCargoApp.Controllers
             //    return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.NoEntryFound });
 
             ViewBag.SenderNameSortParm = String.IsNullOrEmpty(sortOrder) ? "sender_name_desc" : "";
+            ViewBag.OrderNumberSortParm = sortOrder == "order_number" ? "order_number_desc" : "order_number";
+            ViewBag.CreatedDateSortParm = sortOrder == "created_date" ? "created_date_desc" : "created_date";
             ViewBag.RecieverNameSortParm = sortOrder == "reciever" ? "reciever_name_desc" : "reciever";
             ViewBag.VehiculeTypeSortParm = sortOrder == "vehicule_type" ? "vehicule_type_desc" : "vehicule_type";
             ViewBag.SenderAdressSortParm = sortOrder == "sender_adress" ? "sender_adress_desc" : "sender_adress";
@@ -84,6 +86,18 @@ namespace FirstCargoApp.Controllers
 
             switch (sortOrder)
             {
+                case "order_number":
+                    vehicules = vehicules.OrderByDescending(s => s.orderNumber).ToList();
+                    break;
+                case "order_number_desc":
+                    vehicules = vehicules.OrderBy(s => s.orderNumber).ToList();
+                    break;
+                case "created_date":
+                    vehicules = vehicules.OrderByDescending(s => s.createdDate).ToList();
+                    break;
+                case "created_date_desc":
+                    vehicules = vehicules.OrderBy(s => s.createdDate).ToList();
+                    break;
                 case "sender_name_desc":
                     vehicules = vehicules.OrderByDescending(s => s.senderName).ToList();
                     break;
@@ -206,7 +220,11 @@ namespace FirstCargoApp.Controllers
                 vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                 vehicule.createdDate = DateTime.Now;
                 vehicule.paidRest = vehicule.price - vehicule.alreadyPaid;
-                
+
+                var orderNumber = db.Vehicule.Where(p => p.vehiculeID != 0 && p.vehiculeID == db.Vehicule.Max(r => r.vehiculeID)).SingleOrDefault();
+                int getNumber = Int32.Parse(orderNumber.orderNumber.Remove(0, 2)) + 1;
+                vehicule.orderNumber = "VH" + getNumber;
+
                 if (vehicule.senderEmail.Equals(""))
                 {
                     vehicule.senderEmail = "first-cargo-mannheim@outlook.de";
@@ -304,6 +322,42 @@ namespace FirstCargoApp.Controllers
             }
 
             return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.DeleteRecordSuccess });
+        }
+
+
+        // GET: /Vehicule/PrintOrder/5
+        public async Task<ActionResult> PrintOrder(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            if (vehicule == null)
+            {
+                return HttpNotFound();
+            }
+            return View(vehicule);
+        }
+
+        // POST: /Vehicule/PrintOrder/5
+        [HttpPost, ActionName("PrintOrder")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PrintOrderConfirmed(int id)
+        {
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+
+            Vehicule vehicule = await db.Vehicule.FindAsync(id);
+            //db.Other.Remove(other);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.PrintOrderSuccess });
         }
 
         //initilizing culture on controller initialization

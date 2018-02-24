@@ -16,7 +16,8 @@ namespace FirstCargoApp.Helper
             RecordSuccess,
             EditRecordSuccess,
             DeleteRecordSuccess,
-            NoEntryFound
+            NoEntryFound,
+            PrintOrderSuccess
         }
     }
 }
