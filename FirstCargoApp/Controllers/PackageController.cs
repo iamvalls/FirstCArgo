@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using FirstCargoApp.Models;
 using FirstCargoApp.Helper;
+using FirstCargoApp.Report;
 using System.Threading;
 using System.Globalization;
 using PagedList;
@@ -316,6 +317,11 @@ namespace FirstCargoApp.Controllers
             if (package == null)
             {
                 return HttpNotFound();
+            }
+            else
+            {
+                ReportManager report = new ReportManager();
+                report.generateReport(package);
             }
             return View(package);
         }

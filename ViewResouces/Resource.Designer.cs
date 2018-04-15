@@ -331,6 +331,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die First Cargo Mannheim ähnelt.
+        /// </summary>
+        public static string FirstCargo {
+            get {
+                return ResourceManager.GetString("FirstCargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Chassis Number ähnelt.
         /// </summary>
         public static string FrameNumber {

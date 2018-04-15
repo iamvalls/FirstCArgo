@@ -238,3 +238,5 @@ C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\de\Microsoft
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\obj\Debug\FirstCargoApp.csprojResolveAssemblyReference.cache
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\obj\Debug\FirstCargoApp.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\obj\Debug\FirstCargoApp.pdb
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\itextsharp.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\FirstCargoApp\bin\itextsharp.xml

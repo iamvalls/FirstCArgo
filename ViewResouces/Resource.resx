@@ -456,4 +456,7 @@
   <data name="PrintOrderConfirmation" xml:space="preserve">
     <value>Do you really want to generate the Report</value>
   </data>
+  <data name="FirstCargo" xml:space="preserve">
+    <value>First Cargo Mannheim</value>
+  </data>
 </root>
