@@ -38,6 +38,11 @@ namespace FirstCargoApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Other", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "PrintOrders",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Vehicule", action = "printGeneralReport", id = UrlParameter.Optional }
+            );
 
         }
     }

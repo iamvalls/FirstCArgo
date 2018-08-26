@@ -14,13 +14,26 @@
     @Html.ActionLink(@ViewResources.Resource.CreateNewRecords, "Create")
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
-        @ViewResources.Resource.searchbyName: @Html.TextBox("SearchString")
-        <input type="submit" value=@ViewResources.Resource.search />
-    </p>
-}
+<div class="searchId">
+
+    @using (Html.BeginForm())
+    {
+        <p class="alignleft">
+            @ViewResources.Resource.searchbyName: @Html.TextBox("SearchString")
+            <input type="submit" value=@ViewResources.Resource.search />
+        </p>
+    }
+    <input type="button" class="alignright" value=@ViewResources.Resource.print onclick="location.href='@Url.Action("printFilterListReport", new { id = UrlParameter.Optional })'" />
+    @using (Html.BeginForm())
+    {
+        <p class="alignright">
+            @ViewResources.Resource.startDate: @Html.TextBox("startDate")
+            @ViewResources.Resource.startDate: @Html.TextBox("endDate")
+            <input type="submit" value=@ViewResources.Resource.search />
+        </p>
+    }
+
+</div>
 
 <table class="table">
     <tr>
@@ -105,3 +118,24 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $("#startDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy'
+        });
+        $("#endDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy'
+        });
+    </script>
+}

@@ -21,9 +21,11 @@ namespace FirstCargoApp.Controllers
     public class OtherController : Controller
     {
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
+        private static List<Other> others = new List<Other>();
 
         // GET: /Other/
-        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, 
+            string startDate, string endDate, int? page)
         {
 
             ViewBag.StatusMessage =
@@ -35,18 +37,27 @@ namespace FirstCargoApp.Controllers
             // This is to show Notifications
             ViewBag.ReturnUrl = Url.Action("Other");
             // Get all entries from DB
-            var others = await db.Other.ToListAsync();
+            others = await db.Other.ToListAsync();
 
             int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
 
             // Get Entry for a specific User
             if (!Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
-                others = others.Where(s => s.userID == id).ToList();
+                others = others.Where(s => s.userID == id && s.createdDate >= DateTime.Now.AddDays(-2)).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 others = others.Where(s => s.senderName.Contains(searchString)
                                        || s.recieverName.Contains(searchString)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(endDate))
+            {
+                DateTime startDateConverted, endDateConverted;
+                DateTime.TryParse(startDate, out startDateConverted);
+                DateTime.TryParse(endDate, out endDateConverted);
+
+                others = others.Where(s => s.createdDate >= startDateConverted &&
+                    s.createdDate <= endDateConverted).ToList();
             }
 
             //// In case there is no entry
@@ -170,7 +181,7 @@ namespace FirstCargoApp.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
 
             return View(others.ToPagedList(pageNumber, pageSize));
@@ -202,7 +213,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Other other)
+        public async Task<ActionResult> Create([Bind(Include = "otherID,otherType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID,createdDate,orderNumber")] Other other)
         {
             ViewBag.ReturnUrl = Url.Action("Other");
 
@@ -213,7 +224,13 @@ namespace FirstCargoApp.Controllers
                 other.paidRest = other.price - other.alreadyPaid;
 
                 var otherNumber = db.Other.Where(p => p.otherID != 0 && p.otherID == db.Other.Max(r => r.otherID)).SingleOrDefault();
-                int getNumber = Int32.Parse(otherNumber.orderNumber.Remove(0, 2)) + 1;
+                int getNumber=0;
+
+                if (otherNumber ==null || otherNumber.orderNumber == null)
+                    getNumber=1;
+                else
+                    getNumber = Int32.Parse(otherNumber.orderNumber.Remove(0, 2)) + 1;
+
                 other.orderNumber = "OT" + getNumber;
 
                 if (other.senderEmail.Equals(""))
@@ -324,8 +341,8 @@ namespace FirstCargoApp.Controllers
             }
             else
             {
-                ReportManager report = new ReportManager();
-                report.generateReport(other);
+                //ReportManager report = new ReportManager();
+                //report.generateReport(other);
             }
             return View(other);
         }
@@ -341,7 +358,56 @@ namespace FirstCargoApp.Controllers
             //db.Other.Remove(other);
             try
             {
-                await db.SaveChangesAsync();
+                if (other == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    report.generateReport(other);
+                }
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.PrintOrderSuccess });
+        }
+
+        /*[HttpPost, ActionName("printGeneralReport")]
+       [ValidateAntiForgeryToken]*/
+        [AllowAnonymous]
+        public ActionResult printFilterListReport()
+        {
+
+            return View(others);
+        }
+
+        // POST: /Vehicule/printFilterListReport/5
+        [HttpPost, ActionName("printFilterListReport")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> printFilterListReportConfirmed()
+        {
+            ViewBag.ReturnUrl = Url.Action("Package");
+
+            //db.Other.Remove(other);
+            try
+            {
+
+                if (others == null)
+                {
+                    return HttpNotFound();
+                }
+                else if (others.Count < 0)
+                {
+
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    //report.generateListOfOrderWithPreis(others);
+                }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {

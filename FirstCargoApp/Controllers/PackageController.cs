@@ -20,9 +20,11 @@ namespace FirstCargoApp.Controllers
     public class PackageController : Controller
     {
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
+        private static List<Package> packages = new List<Package>();
 
         // GET: /Package/
-        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, 
+            string startDate, string endDate, int? page)
         {
 
             ViewBag.StatusMessage =
@@ -33,17 +35,26 @@ namespace FirstCargoApp.Controllers
                 : "";
 
             ViewBag.ReturnUrl = Url.Action("Package");
-            var packages = await db.Package.ToListAsync();
+             packages = await db.Package.ToListAsync();
 
             int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
             // Get Entry for a specific User
             if (!Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
-                packages = db.Package.Where(s => s.userID == id).ToList();
+                packages = db.Package.Where(s => s.userID == id && s.createdDate >= DateTime.Now.AddDays(-2)).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 packages = packages.Where(s => s.senderName.Contains(searchString)
                                        || s.recieverName.Contains(searchString)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(endDate))
+            {
+                DateTime startDateConverted, endDateConverted;
+                DateTime.TryParse(startDate, out startDateConverted);
+                DateTime.TryParse(endDate, out endDateConverted);
+
+                packages = packages.Where(s => s.createdDate >= startDateConverted &&
+                    s.createdDate <= endDateConverted).ToList();
             }
 
             //// In case there is no entry
@@ -165,7 +176,7 @@ namespace FirstCargoApp.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
 
             return View(packages.ToPagedList(pageNumber, pageSize));
@@ -250,7 +261,7 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID")] Package package)
+        public async Task<ActionResult> Edit([Bind(Include = "packageID,packageType,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,contentDescription,userID,createdDate,orderNumber")] Package package)
         {
             ViewBag.ReturnUrl = Url.Action("Package");
 
@@ -320,10 +331,51 @@ namespace FirstCargoApp.Controllers
             }
             else
             {
-                ReportManager report = new ReportManager();
-                report.generateReport(package);
+                //ReportManager report = new ReportManager();
+                //report.generateReport(package);
             }
             return View(package);
+        }
+
+        /*[HttpPost, ActionName("printGeneralReport")]
+       [ValidateAntiForgeryToken]*/
+        [AllowAnonymous]
+        public ActionResult printFilterListReport()
+        {
+
+            return View(packages);
+        }
+
+        // POST: /Vehicule/printFilterListReport/5
+        [HttpPost, ActionName("printFilterListReport")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> printFilterListReportConfirmed()
+        {
+            ViewBag.ReturnUrl = Url.Action("Package");
+
+            //db.Other.Remove(other);
+            try
+            {
+
+                if (packages == null)
+                {
+                    return HttpNotFound();
+                }
+                else if (packages.Count < 0)
+                {
+
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    //report.generateListOfOrderWithPreis(packages);
+                }
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.PrintOrderSuccess });
         }
 
         // POST: /Package/PrintOrder/5
@@ -337,7 +389,15 @@ namespace FirstCargoApp.Controllers
             //db.Other.Remove(other);
             try
             {
-                await db.SaveChangesAsync();
+                if (package == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    report.generateReport(package);
+                }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {

@@ -453,4 +453,49 @@
   <data name="FirstCargo" xml:space="preserve">
     <value>First Cargo Mannheim</value>
   </data>
+  <data name="Appelation" xml:space="preserve">
+    <value>Herr / Frau</value>
+  </data>
+  <data name="bill" xml:space="preserve">
+    <value>RECHNUNUG NR/</value>
+  </data>
+  <data name="customerSignature" xml:space="preserve">
+    <value>Unterschrift Kunde</value>
+  </data>
+  <data name="endSalutation" xml:space="preserve">
+    <value>Mit freundlichen Grüßen</value>
+  </data>
+  <data name="salutation" xml:space="preserve">
+    <value>Sehr geehrte(r) Herr/Frau</value>
+  </data>
+  <data name="text1" xml:space="preserve">
+    <value>hiermit stellen wir Ihnen folgende Posten in Rechnung: Transport Ihre Ware von Mannheim nach</value>
+  </data>
+  <data name="text2" xml:space="preserve">
+    <value>Dieser Service ist gemäß § 4Nr.3a) aa) UStG steuerfrei (Paragraph 4).</value>
+  </data>
+  <data name="text3" xml:space="preserve">
+    <value>Siehe Seevertrag  und Parkplatz Bedingungen.</value>
+  </data>
+  <data name="yourTeam" xml:space="preserve">
+    <value>Ihr First Cargo Mannheim</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="objectType" xml:space="preserve">
+    <value>Ware</value>
+  </data>
+  <data name="endDate" xml:space="preserve">
+    <value>Enddatum</value>
+  </data>
+  <data name="startDate" xml:space="preserve">
+    <value>Anfangsdatum</value>
+  </data>
+  <data name="print" xml:space="preserve">
+    <value>Report asdrck</value>
+  </data>
+  <data name="taxNumber" xml:space="preserve">
+    <value>Steuernummer</value>
+  </data>
 </root>

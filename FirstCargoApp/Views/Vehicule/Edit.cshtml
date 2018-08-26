@@ -16,6 +16,8 @@
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.vehiculeID)
+        @Html.HiddenFor(model => model.createdDate)
+        @Html.HiddenFor(model => model.orderNumber)
 
         <div class="form-group">
             @Html.LabelFor(model => model.senderName, new { @class = "control-label col-md-2" })*
@@ -24,8 +26,7 @@
                 @Html.ValidationMessageFor(model => model.senderName)
             </div>
         </div>
-
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.senderAdress, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.senderAdress, new { placeholder = "cargo street 34, 4563 Washinton DC", style = "width: 700px" })
@@ -109,6 +110,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
+                @{ Html.EnableClientValidation(false); }
                 @Html.EditorFor(model => model.alreadyPaid, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.paid)
             </div>

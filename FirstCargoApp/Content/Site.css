@@ -54,3 +54,11 @@ input[type="checkbox"].input-validation-error {
 #styleValidationMessageFor{
 
 }
+.alignleft,searchId {
+    float: left;
+}
+
+.alignright{
+    float: right;
+    margin-left: 20px;
+}

@@ -1,0 +1,23 @@
+﻿@model List<FirstCargoApp.Models.Vehicule>
+
+@{
+    ViewBag.Title = @ViewResources.Resource.PrintOrder;
+}
+
+<h2>@ViewResources.Resource.PrintOrder</h2>
+
+<h3>@ViewResources.Resource.PrintOrderConfirmation</h3>
+<div>
+    <h4>@ViewResources.Resource.VehiculeRecords</h4>
+    <hr />
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@ViewResources.Resource.PrintOrder class="btn btn-default" /> |
+            @Html.ActionLink(@ViewResources.Resource.BacktoList, "Index")
+        </div>
+    }
+</div>

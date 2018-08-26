@@ -88,11 +88,29 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mr / Mrs ähnelt.
+        /// </summary>
+        public static string Appelation {
+            get {
+                return ResourceManager.GetString("Appelation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back to List ähnelt.
         /// </summary>
         public static string BacktoList {
             get {
                 return ResourceManager.GetString("BacktoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die BILL NUMBER/ ähnelt.
+        /// </summary>
+        public static string bill {
+            get {
+                return ResourceManager.GetString("bill", resourceCulture);
             }
         }
         
@@ -174,6 +192,24 @@ namespace ViewResources {
         public static string CreateNewRecords {
             get {
                 return ResourceManager.GetString("CreateNewRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Customer Signature ähnelt.
+        /// </summary>
+        public static string customerSignature {
+            get {
+                return ResourceManager.GetString("customerSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Date ähnelt.
+        /// </summary>
+        public static string date {
+            get {
+                return ResourceManager.GetString("date", resourceCulture);
             }
         }
         
@@ -309,6 +345,24 @@ namespace ViewResources {
         public static string EmailRequired {
             get {
                 return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die End Date ähnelt.
+        /// </summary>
+        public static string endDate {
+            get {
+                return ResourceManager.GetString("endDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Best regards ähnelt.
+        /// </summary>
+        public static string endSalutation {
+            get {
+                return ResourceManager.GetString("endSalutation", resourceCulture);
             }
         }
         
@@ -547,6 +601,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unit ähnelt.
+        /// </summary>
+        public static string objectType {
+            get {
+                return ResourceManager.GetString("objectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Actuel Password ähnelt.
         /// </summary>
         public static string OldPassword {
@@ -709,6 +772,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Print Report ähnelt.
+        /// </summary>
+        public static string print {
+            get {
+                return ResourceManager.GetString("print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Generate Report ähnelt.
         /// </summary>
         public static string PrintOrder {
@@ -844,6 +916,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Dear Mr/Mrs ähnelt.
+        /// </summary>
+        public static string salutation {
+            get {
+                return ResourceManager.GetString("salutation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
         /// </summary>
         public static string Save {
@@ -952,11 +1033,56 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start Date ähnelt.
+        /// </summary>
+        public static string startDate {
+            get {
+                return ResourceManager.GetString("startDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
         /// </summary>
         public static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tax number ähnelt.
+        /// </summary>
+        public static string taxNumber {
+            get {
+                return ResourceManager.GetString("taxNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die we hereby invoice you about the following items: Transport of your goods from Mannheim to ähnelt.
+        /// </summary>
+        public static string text1 {
+            get {
+                return ResourceManager.GetString("text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This Service is tax free according to § 4Nr.3a)aa) UStG (paragraph 4). ähnelt.
+        /// </summary>
+        public static string text2 {
+            get {
+                return ResourceManager.GetString("text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die See maritime contract and parking conditions. ähnelt.
+        /// </summary>
+        public static string text3 {
+            get {
+                return ResourceManager.GetString("text3", resourceCulture);
             }
         }
         
@@ -1083,6 +1209,15 @@ namespace ViewResources {
         public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your First Cargo Mannheim ähnelt.
+        /// </summary>
+        public static string yourTeam {
+            get {
+                return ResourceManager.GetString("yourTeam", resourceCulture);
             }
         }
     }

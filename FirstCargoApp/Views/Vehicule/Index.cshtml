@@ -2,6 +2,7 @@
 @using PagedList.Mvc;
 @using Microsoft.AspNet.Identity;
 
+
 @{
     ViewBag.Title = @ViewResources.Resource.VehiculeRecords;
 }
@@ -14,96 +15,133 @@
     @Html.ActionLink(@ViewResources.Resource.Create, "Create")
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
+<div class="searchId">
+
+    @using (Html.BeginForm())
+    {
+    <p class="alignleft">
         @ViewResources.Resource.searchbyName: @Html.TextBox("SearchString")
         <input type="submit" value=@ViewResources.Resource.search />
     </p>
-}
+    }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.OrderNumber, "Index", new { sortOrder = ViewBag.OrderNumberSortParm })
-        </th>
+    <input type="button" class="alignright" value=@ViewResources.Resource.print onclick="location.href='@Url.Action("printFilterListReport", new { id = UrlParameter.Optional })'" />
+    @using (Html.BeginForm())
+    {
+    <p class="alignright">
+        @ViewResources.Resource.startDate: @Html.TextBox("startDate")
+        @ViewResources.Resource.startDate: @Html.TextBox("endDate")
+        <input type="submit" value=@ViewResources.Resource.search />
+    </p>
+    }
+</div>
 
-        <th>
-            @Html.ActionLink(ViewResources.Resource.CreatedDate, "Index", new { sortOrder = ViewBag.CreatedDateSortParm })
-        </th>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.OrderNumber, "Index", new { sortOrder = ViewBag.OrderNumberSortParm })
+            </th>
 
-        <th>
-            @Html.ActionLink(ViewResources.Resource.SenderName, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.RecieverName, "Index", new { sortOrder = ViewBag.RecieverNameSortParm })
-        </th>
-        
-        <th>
-            @Html.ActionLink(ViewResources.Resource.Destination, "Index", new { sortOrder = ViewBag.DestinationSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.Price, "Index", new { sortOrder = ViewBag.PriceSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.Paid, "Index", new { sortOrder = ViewBag.PaidSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.RestToPay, "Index", new { sortOrder = ViewBag.PaidSortParm })
-        </th>
-        <th>
-            @Html.ActionLink(ViewResources.Resource.FrameNumber, "Index", new { sortOrder = ViewBag.FrameNumberSortParm })
-        </th>
-    </tr>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.CreatedDate, "Index", new { sortOrder = ViewBag.CreatedDateSortParm })
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.SenderName, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.RecieverName, "Index", new { sortOrder = ViewBag.RecieverNameSortParm })
+            </th>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.orderNumber)
-        </td>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.Destination, "Index", new { sortOrder = ViewBag.DestinationSortParm })
+            </th>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.Price, "Index", new { sortOrder = ViewBag.PriceSortParm })
+            </th>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.Paid, "Index", new { sortOrder = ViewBag.PaidSortParm })
+            </th>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.RestToPay, "Index", new { sortOrder = ViewBag.PaidSortParm })
+            </th>
+            <th>
+                @Html.ActionLink(ViewResources.Resource.FrameNumber, "Index", new { sortOrder = ViewBag.FrameNumberSortParm })
+            </th>
+        </tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.createdDate)
-        </td>
+        @foreach (var item in Model)
+        {
+            <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.senderName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recieverName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.destination)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.alreadyPaid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.paidRest)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.frameNumber)
-        </td>
-        <td>
-            @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |
-            @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id = item.vehiculeID }) |
-            @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id = item.vehiculeID }) |
-            @if (Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
-            {
-                @Html.ActionLink(@ViewResources.Resource.PrintOrder, "PrintOrder", new { id = item.vehiculeID })
-            }
-        </td>
-    </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderNumber)
+                </td>
 
-</table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdDate)
+                </td>
 
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                <td>
+                    @Html.DisplayFor(modelItem => item.senderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recieverName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.alreadyPaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paidRest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.frameNumber)
+                </td>
+                <td>
+                    @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |
+                    @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id = item.vehiculeID }) |
+                    @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id = item.vehiculeID }) |
+                    @if (Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
+                    {
+                        @Html.ActionLink(@ViewResources.Resource.PrintOrder, "PrintOrder", new { id = item.vehiculeID })
+                    }
+                </td>
+            </tr>
+        }
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
+    </table>
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    @section Scripts {
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+
+        <script type="text/javascript">
+
+            $("#startDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#endDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        </script>
+    }
+
+

@@ -66,4 +66,3 @@ C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewRes
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\de\ViewResources.resources.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.dll
 C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.pdb
-C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache

@@ -21,9 +21,11 @@ namespace FirstCargoApp.Controllers
     public class VehiculeController : Controller
     {
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
+        private static List <Vehicule> vehicules = new List<Vehicule>() ;
 
         // GET: /Vehicule/
-        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, 
+            string startDate, string endDate, int? page)
         {
 
             ViewBag.StatusMessage =
@@ -34,18 +36,27 @@ namespace FirstCargoApp.Controllers
                 : "";
 
             ViewBag.ReturnUrl = Url.Action("Vehicule");
-            var vehicules = await db.Vehicule.ToListAsync();
+             vehicules = await db.Vehicule.ToListAsync();
 
             int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
-
+ 
             // Get Entry for a specific User
             if (!Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
-                vehicules = vehicules.Where(s => s.userID == id).ToList();
+                vehicules = vehicules.Where(s => s.userID == id && s.createdDate >= DateTime.Now.AddDays(-2)).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 vehicules = vehicules.Where(s => s.senderName.Contains(searchString)
                                        || s.recieverName.Contains(searchString)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(endDate))
+            {
+                DateTime startDateConverted, endDateConverted;
+                DateTime.TryParse(startDate, out startDateConverted);
+                DateTime.TryParse(endDate, out endDateConverted);
+
+                vehicules = vehicules.Where(s => s.createdDate >= startDateConverted &&
+                    s.createdDate <= endDateConverted).ToList();
             }
             // Show only the last 6 digit of the Frame number
             for (int i = 0; i < vehicules.Count(); i++)
@@ -179,7 +190,9 @@ namespace FirstCargoApp.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            Session["vehiculesList"] = vehicules;
+
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
 
             return View(vehicules.ToPagedList(pageNumber, pageSize));
@@ -212,12 +225,12 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Create([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber,createdDate")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
 
             if (ModelState.IsValid)
-            {
+            { 
                 vehicule.userID = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
                 vehicule.createdDate = DateTime.Now;
                 vehicule.paidRest = vehicule.price - vehicule.alreadyPaid;
@@ -266,9 +279,14 @@ namespace FirstCargoApp.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber")] Vehicule vehicule)
+        public async Task<ActionResult> Edit([Bind(Include = "vehiculeID,senderName,senderAdress,senderEmail,senderPhoneNumber,recieverName,recieverAdress,recieverEmail,recieverPhoneNumber,destination,price,paid,alreadyPaid,paidRest,weight,height,length,depth,userID,vehiculeType,frameNumber,createdDate,orderNumber")] Vehicule vehicule)
         {
             ViewBag.ReturnUrl = Url.Action("Vehicule");
+
+            //var errors3 = ModelState
+//.Where(x => x.Value.Errors.Count > 0)
+//.Select(x => new { x.Key, x.Value.Errors })
+//.ToArray(); // This has to be remove later
 
             if (ModelState.IsValid)
             {
@@ -340,8 +358,8 @@ namespace FirstCargoApp.Controllers
             }
             else
             {
-                ReportManager report = new ReportManager();
-                report.generateReport(vehicule);
+                //ReportManager report = new ReportManager();
+                //report.generateReport(vehicule);
             }
             return View(vehicule);
         }
@@ -357,7 +375,56 @@ namespace FirstCargoApp.Controllers
             //db.Other.Remove(other);
             try
             {
-                await db.SaveChangesAsync();
+                if (vehicule == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    report.generateReport(vehicule);
+                }
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                // Todo Log the error
+            }
+            return RedirectToAction("Index", new { Message = NotificationMessage.ManageMessageId.PrintOrderSuccess });
+        }
+
+    /*[HttpPost, ActionName("printGeneralReport")]
+        [ValidateAntiForgeryToken]*/
+        [AllowAnonymous]
+        public ActionResult printFilterListReport()
+        {
+
+            return View(vehicules);
+        }
+
+        // POST: /Vehicule/printFilterListReport/5
+        [HttpPost, ActionName("printFilterListReport")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> printFilterListReportConfirmed()
+        {
+            ViewBag.ReturnUrl = Url.Action("Vehicule");
+           
+            //db.Other.Remove(other);
+            try
+            {
+
+                if (vehicules == null)
+                {
+                    return HttpNotFound();
+                }
+                else if (vehicules.Count < 0)
+                {
+
+                }
+                else
+                {
+                    ReportManager report = new ReportManager();
+                    //report.generateListOfOrderWithPreis(vehicules);
+                }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
