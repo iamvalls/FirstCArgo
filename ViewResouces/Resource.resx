@@ -231,4 +231,199 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>Please Enter Your Email Adress</value>
   </data>
+  <data name="ContentDescription" xml:space="preserve">
+    <value>ContentDescription</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>Cubic meter(cm)</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="FrameNumber" xml:space="preserve">
+    <value>Frame Number</value>
+  </data>
+  <data name="FrameNumberRequired" xml:space="preserve">
+    <value>Please Enter the Frame Number</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height(cm)</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length(cm)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price(€)</value>
+  </data>
+  <data name="RecieverAddress" xml:space="preserve">
+    <value>Reciever Address</value>
+  </data>
+  <data name="RecieverName" xml:space="preserve">
+    <value>Reciever Name</value>
+  </data>
+  <data name="RecieverPhoneNumber" xml:space="preserve">
+    <value>Reciever Phone Number</value>
+  </data>
+  <data name="SenderAdressRequired" xml:space="preserve">
+    <value>Please Enter the Sender Address.</value>
+  </data>
+  <data name="SenderNameRequired" xml:space="preserve">
+    <value>Please Enter the Name of the sender</value>
+  </data>
+  <data name="SenderPhoneNumber" xml:space="preserve">
+    <value>Sender Phone Number</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight(cm)</value>
+  </data>
+  <data name="EmailAddressRequired" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="BacktoList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateNewRecords" xml:space="preserve">
+    <value>Create New Record</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="deleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="OtherRecords" xml:space="preserve">
+    <value>Other Records</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Groupage</value>
+  </data>
+  <data name="PackageRecords" xml:space="preserve">
+    <value>Groupage Records</value>
+  </data>
+  <data name="Vehicule" xml:space="preserve">
+    <value>Vehicule</value>
+  </data>
+  <data name="VehiculeRecords" xml:space="preserve">
+    <value>Vehicule Records</value>
+  </data>
+  <data name="RecieverAdress" xml:space="preserve">
+    <value>Reciever Adress</value>
+  </data>
+  <data name="RecieverEmail" xml:space="preserve">
+    <value>Reciever Email</value>
+  </data>
+  <data name="SenderAdress" xml:space="preserve">
+    <value>Absender Adress</value>
+  </data>
+  <data name="SenderEmail" xml:space="preserve">
+    <value>Sender Email</value>
+  </data>
+  <data name="OtherType" xml:space="preserve">
+    <value>Other Type</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Groupage Type</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Password Successfully change</value>
+  </data>
+  <data name="DeleteRecordSuccess" xml:space="preserve">
+    <value>Record successfully deleted</value>
+  </data>
+  <data name="EditRecordSuccess" xml:space="preserve">
+    <value>Record successfully edited</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="RecordSuccess" xml:space="preserve">
+    <value>Record successfully created</value>
+  </data>
+  <data name="Anwendungsname" xml:space="preserve">
+    <value>First Cargo App</value>
+  </data>
+  <data name="DestinationRequired" xml:space="preserve">
+    <value>Please enter the destination</value>
+  </data>
+  <data name="PackageTypeRequired" xml:space="preserve">
+    <value>Please enter a Groupage Type</value>
+  </data>
+  <data name="RecieverNameRequired" xml:space="preserve">
+    <value>Please enter the name of the reciever number</value>
+  </data>
+  <data name="RecieverPhoneNumberRequired" xml:space="preserve">
+    <value>Please enter the reciever phone number</value>
+  </data>
+  <data name="SenderPhoneNumberRequired" xml:space="preserve">
+    <value>Please enter the sender phone number</value>
+  </data>
+  <data name="VehiculeTypeRequired" xml:space="preserve">
+    <value>Please enter the typ of the Car</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="searchbyName" xml:space="preserve">
+    <value>Find by Name</value>
+  </data>
+  <data name="NoEntryFound" xml:space="preserve">
+    <value>No Entry Found</value>
+  </data>
+  <data name="OtherTypeRequired" xml:space="preserve">
+    <value>Please enter an other type </value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DepthRequired" xml:space="preserve">
+    <value>Please enter the Depth</value>
+  </data>
+  <data name="HeigthRequired" xml:space="preserve">
+    <value>Please enter the Heigth</value>
+  </data>
+  <data name="LenghtRequired" xml:space="preserve">
+    <value>Please enter the Length</value>
+  </data>
+  <data name="PriceRequired" xml:space="preserve">
+    <value>Please enter the price.</value>
+  </data>
+  <data name="SenderEmailRequired" xml:space="preserve">
+    <value>Please enter the Email</value>
+  </data>
+  <data name="WeightRequired" xml:space="preserve">
+    <value>Please enter the Weight</value>
+  </data>
+  <data name="RecieverAddressRequired" xml:space="preserve">
+    <value>Please Enter the Reciever Address.</value>
+  </data>
+  <data name="DigitRequired" xml:space="preserve">
+    <value>Please enter Digit.</value>
+  </data>
+  <data name="PasswordRules" xml:space="preserve">
+    <value>The Password must at least a Big characters and a special Sign.</value>
+  </data>
+  <data name="LogedAs" xml:space="preserve">
+    <value>Log as</value>
+  </data>
+  <data name="FrameNumberLength" xml:space="preserve">
+    <value> The Framenumber must be 17 characters long.</value>
+  </data>
+  <data name="FrameNumberPattern" xml:space="preserve">
+    <value>The Framenumber kann only have Letters and Numbers</value>
+  </data>
 </root>

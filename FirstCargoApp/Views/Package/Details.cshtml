@@ -1,23 +1,158 @@
-﻿@model FirstCargoApp.Models.PACKAGES
+﻿@model FirstCargoApp.Models.Package
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @ViewResources.Resource.Detail;
 }
 
-<h2>Details</h2>
+<h2>@ViewResources.Resource.Detail</h2>
 
 <div>
-    <h4>PACKAGES</h4>
+    <h4>Package</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
+            @Html.DisplayNameFor(model => model.packageType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CATEGORIES.categoryName)
+            @Html.DisplayFor(model => model.packageType)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.senderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senderAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senderEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senderPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senderPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recieverPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recieverPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alreadyPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alreadyPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paidRest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paidRest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.depth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.depth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contentDescription)
+        </dd>
     </dl>
 </div>
 <p>

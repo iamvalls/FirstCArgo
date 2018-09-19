@@ -1,45 +1,96 @@
-﻿@model IEnumerable<FirstCargoApp.Models.VEHICULES>
+﻿@model PagedList.IPagedList<FirstCargoApp.Models.Vehicule>
+@using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @ViewResources.Resource.VehiculeRecords;
 }
 
-<h2>Index</h2>
+<h2>@ViewResources.Resource.VehiculeRecords</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@ViewResources.Resource.Create, "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @ViewResources.Resource.searchbyName: @Html.TextBox("SearchString")
+        <input type="submit" value=@ViewResources.Resource.search />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.vehiculeType)
+            @Html.ActionLink(ViewResources.Resource.CreatedDate, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
+        </th>
+
+        <th>
+            @Html.ActionLink(ViewResources.Resource.SenderName, "Index", new { sortOrder = ViewBag.SenderNameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.frameNumber)
+            @Html.ActionLink(ViewResources.Resource.RecieverName, "Index", new { sortOrder = ViewBag.RecieverNameSortParm })
+        </th>
+        
+        <th>
+            @Html.ActionLink(ViewResources.Resource.Destination, "Index", new { sortOrder = ViewBag.DestinationSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CATEGORIES.categoryName)
+            @Html.ActionLink(ViewResources.Resource.Price, "Index", new { sortOrder = ViewBag.PriceSortParm })
         </th>
-        <th></th>
+        <th>
+            @Html.ActionLink(ViewResources.Resource.Paid, "Index", new { sortOrder = ViewBag.PaidSortParm })
+        </th>
+        <th>
+            @Html.ActionLink(ViewResources.Resource.RestToPay, "Index", new { sortOrder = ViewBag.PaidSortParm })
+        </th>
+        <th>
+            @Html.ActionLink(ViewResources.Resource.FrameNumber, "Index", new { sortOrder = ViewBag.FrameNumberSortParm })
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+
         <td>
-            @Html.DisplayFor(modelItem => item.vehiculeType)
+            @Html.DisplayFor(modelItem => item.createdDate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.senderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recieverName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.alreadyPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paidRest)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.frameNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CATEGORIES.categoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.vehiculeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.vehiculeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.vehiculeID })
+            @Html.ActionLink(@ViewResources.Resource.Edit, "Edit", new { id = item.vehiculeID }) |
+            @Html.ActionLink(@ViewResources.Resource.Detail, "Details", new { id = item.vehiculeID }) |
+            @Html.ActionLink(@ViewResources.Resource.Delete, "Delete", new { id = item.vehiculeID })
         </td>
     </tr>
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

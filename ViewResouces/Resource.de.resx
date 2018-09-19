@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Address" xml:space="preserve">
-    <value />
+    <value>Anschrift</value>
   </data>
   <data name="AddressRequired" xml:space="preserve">
-    <value />
+    <value>Bitte geben Sie die Adresse ein.</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Kennwort bestätigen</value>
@@ -154,7 +154,7 @@
     <value>Name</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
-    <value />
+    <value>Bitte geben Sie der Name ein.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Kennwort</value>
@@ -163,7 +163,7 @@
     <value>Bitte geben Sie das Kennwort ein.</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value />
+    <value>Speichern</value>
   </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value />
@@ -227,5 +227,197 @@
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Bitte geben Sie Ihre Email Adresse ein.</value>
+  </data>
+  <data name="ContentDescription" xml:space="preserve">
+    <value>Inhalt Bechreibung</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>Kubikmeter(cm)</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Bestimmungsort</value>
+  </data>
+  <data name="FrameNumber" xml:space="preserve">
+    <value>Fhzg ident. Nr</value>
+  </data>
+  <data name="FrameNumberRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Farhzeugident. Nr ein.</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Höhe(cm)</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Länge(cm)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Bezahlt</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preise(€)</value>
+  </data>
+  <data name="RecieverAddress" xml:space="preserve">
+    <value>Empfger Anschrift</value>
+  </data>
+  <data name="RecieverName" xml:space="preserve">
+    <value>Empfger Name</value>
+  </data>
+  <data name="RecieverPhoneNumber" xml:space="preserve">
+    <value>Empfger Tel Nr</value>
+  </data>
+  <data name="SenderAdressRequired" xml:space="preserve">
+    <value>Bitte geben Sie der Absender Anschrift ein.</value>
+  </data>
+  <data name="SenderNameRequired" xml:space="preserve">
+    <value>Bitte geben Sie der Absender Name ein.</value>
+  </data>
+  <data name="SenderPhoneNumber" xml:space="preserve">
+    <value>Absender Tel Nr</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Breite(cm)</value>
+  </data>
+  <data name="EmailAddressRequired" xml:space="preserve">
+    <value>Ungültige Email Adress</value>
+  </data>
+  <data name="BacktoList" xml:space="preserve">
+    <value>Zurück zur Liste</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="CreateNewRecords" xml:space="preserve">
+    <value>Neue Eintrag erstellen</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="deleteConfirmation" xml:space="preserve">
+    <value>Wollen Sie wirklich dieser Eintrag löschen?</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Anzeigen</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="OtherRecords" xml:space="preserve">
+    <value>Andere Einträge</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Gruppierung</value>
+  </data>
+  <data name="PackageRecords" xml:space="preserve">
+    <value>Gruppierung Einträge</value>
+  </data>
+  <data name="Vehicule" xml:space="preserve">
+    <value>PKW</value>
+  </data>
+  <data name="VehiculeRecords" xml:space="preserve">
+    <value>Autos Einträge</value>
+  </data>
+  <data name="RecieverAdress" xml:space="preserve">
+    <value>Empf Adress</value>
+  </data>
+  <data name="RecieverEmail" xml:space="preserve">
+    <value>Empfger Email</value>
+  </data>
+  <data name="SenderAdress" xml:space="preserve">
+    <value>Adress Absd</value>
+  </data>
+  <data name="SenderEmail" xml:space="preserve">
+    <value>Email Absd</value>
+  </data>
+  <data name="OtherType" xml:space="preserve">
+    <value>Andere Typ</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Gruppierung Typ</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Ihr Kennwort wurde geändert.</value>
+  </data>
+  <data name="DeleteRecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich gelöscht</value>
+  </data>
+  <data name="EditRecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich bearbeitet</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Benutzername oder Email bereits vorhanden</value>
+  </data>
+  <data name="RecordSuccess" xml:space="preserve">
+    <value>Eintrag erfolgreich angelegt</value>
+  </data>
+  <data name="Anwendungsname" xml:space="preserve">
+    <value>First Cargo App</value>
+  </data>
+  <data name="DestinationRequired" xml:space="preserve">
+    <value>Bitte Ziel eingeben</value>
+  </data>
+  <data name="PackageTypeRequired" xml:space="preserve">
+    <value>Bitte Gruppierung Art eingeben</value>
+  </data>
+  <data name="RecieverNameRequired" xml:space="preserve">
+    <value>Bitte Empfänger Name eingeben</value>
+  </data>
+  <data name="RecieverPhoneNumberRequired" xml:space="preserve">
+    <value>Bitte Empfänger Telefonnummer eingeben</value>
+  </data>
+  <data name="SenderPhoneNumberRequired" xml:space="preserve">
+    <value>Bitte Absender Telefonnummer eingeben</value>
+  </data>
+  <data name="VehiculeTypeRequired" xml:space="preserve">
+    <value>Bitte Auto Typ eingeben</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="searchbyName" xml:space="preserve">
+    <value>Suche nach Name</value>
+  </data>
+  <data name="NoEntryFound" xml:space="preserve">
+    <value>Keine Einträge gefunden</value>
+  </data>
+  <data name="OtherTypeRequired" xml:space="preserve">
+    <value>Bitte Eintrag Art eingeben</value>
+  </data>
+  <data name="DepthRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Tiefe ein</value>
+  </data>
+  <data name="HeigthRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Höhe ein.</value>
+  </data>
+  <data name="LenghtRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Länge ein</value>
+  </data>
+  <data name="PriceRequired" xml:space="preserve">
+    <value>Bitte geben Sie der Preis ein.</value>
+  </data>
+  <data name="SenderEmailRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Email Adresse ein</value>
+  </data>
+  <data name="WeightRequired" xml:space="preserve">
+    <value>Bitte geben Sie das Gewicht ein</value>
+  </data>
+  <data name="RecieverAddressRequired" xml:space="preserve">
+    <value>Bitte geben Sie die Epfänger Adresse.</value>
+  </data>
+  <data name="DigitRequired" xml:space="preserve">
+    <value>Bitte Nummer eingeben.</value>
+  </data>
+  <data name="PasswordRules" xml:space="preserve">
+    <value>Das Kennwort muss mindestens ein Großbuchstabe und ein Sonderzeichen aben</value>
+  </data>
+  <data name="LogedAs" xml:space="preserve">
+    <value>Angemeldet als </value>
+  </data>
+  <data name="FrameNumberLength" xml:space="preserve">
+    <value>Die Frarhzeugident Nr muss 17 zeichen lang sein.</value>
+  </data>
+  <data name="FrameNumberPattern" xml:space="preserve">
+    <value>Die Frarhzeugident und kann nur aus Buchstaben und Ziffern bestehen.</value>
   </data>
 </root>

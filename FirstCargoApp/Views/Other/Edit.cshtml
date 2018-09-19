@@ -1,0 +1,194 @@
+﻿@model FirstCargoApp.Models.Other
+
+@{
+    ViewBag.Title = @ViewResources.Resource.Edit;
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Other</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.otherID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.otherType, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.otherType, new { placeholder = "Container", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.otherType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderName, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.senderName, new { placeholder = "Musterman", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.senderName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderAdress, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.senderAdress, new { placeholder = "cargo street 34, 4563 Washinton DC", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.senderAdress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderEmail, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.senderEmail, new { placeholder = "max.musterman@Email.com", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.senderEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.senderPhoneNumber, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.senderPhoneNumber, new { placeholder = "002372438773478", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.senderPhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverName, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.recieverName, new { placeholder = "Musterman", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.recieverName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverAdress, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.recieverAdress, new { placeholder = "Junior", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.recieverAdress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverEmail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.recieverEmail, new { placeholder = "junior.musterman@Email.com", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.recieverEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recieverPhoneNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.recieverPhoneNumber, new { placeholder = "00237821347433", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.recieverPhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.destination, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.destination, new { placeholder = "Douala Cameroon", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.destination)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.price, new { placeholder = "1000€", style = "width: 500px" })
+                @{ Html.EnableClientValidation(true); }
+                @Html.ValidationMessageFor(model => model.price)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.paid, new { style = "width: 200px" })
+                @Html.ValidationMessageFor(model => model.paid)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paid, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.alreadyPaid, new { style = "width: 200px" })
+
+                @Html.ValidationMessageFor(model => model.paid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paidRest, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paidRest, new { style = "width: 500px" })
+                @Html.ValidationMessageFor(model => model.paidRest)
+                @{ Html.EnableClientValidation(true); }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.weight, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.weight, new { htmlAttributes = new { placeholder = "567cm" } })
+                @Html.ValidationMessageFor(model => model.weight)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.height, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.height, new { placeholder = "567cm", style = "width: 500px" })
+                @Html.ValidationMessageFor(model => model.height)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.length, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.length, new { placeholder = "567cm", style = "width: 500px" })
+                @Html.ValidationMessageFor(model => model.length)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.depth, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.depth, new { placeholder = "567cm", style = "width: 500px" })
+                @{ Html.EnableClientValidation(true); }
+                @Html.ValidationMessageFor(model => model.depth)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contentDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.contentDescription, new { placeholder = "Your description here", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.contentDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@ViewResources.Resource.Save class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

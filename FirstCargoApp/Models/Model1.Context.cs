@@ -25,10 +25,9 @@ namespace FirstCargoApp.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CATEGORIES> CATEGORIES { get; set; }
-        public virtual DbSet<OTHERS> OTHERS { get; set; }
-        public virtual DbSet<PACKAGES> PACKAGES { get; set; }
+        public virtual DbSet<Other> Other { get; set; }
+        public virtual DbSet<Package> Package { get; set; }
         public virtual DbSet<USER> USER { get; set; }
-        public virtual DbSet<VEHICULES> VEHICULES { get; set; }
+        public virtual DbSet<Vehicule> Vehicule { get; set; }
     }
 }

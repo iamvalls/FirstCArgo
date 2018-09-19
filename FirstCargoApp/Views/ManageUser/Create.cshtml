@@ -1,11 +1,10 @@
 ﻿@model FirstCargoApp.Models.USER
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = @ViewResources.Resource.CreateNewRecords;
 }
 
-<h2>Create</h2>
-
+<h2>@ViewResources.Resource.CreateNewRecords</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -18,17 +17,17 @@
         @Html.HiddenFor(model => model.userID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.userName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.userName, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.EditorFor(model => model.userName)
+                @Html.TextBoxFor(model => model.userName, new { placeholder = "maxiM", style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.userName)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.userFirstName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.userFirstName, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.EditorFor(model => model.userFirstName)
+                @Html.TextBoxFor(model => model.userFirstName)
                 @Html.ValidationMessageFor(model => model.userFirstName)
             </div>
         </div>
@@ -36,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.userLastName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.userLastName)
+                @Html.TextBoxFor(model => model.userLastName,new { placeholder = "maxiM", style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.userLastName)
             </div>
         </div>
@@ -50,17 +49,25 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.password, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.password, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.EditorFor(model => model.password)
+                @Html.PasswordFor(model => model.password, new { placeholder = "", style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.password)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.confirmPassword, new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.EditorFor(model => model.email)
+                @Html.PasswordFor(model => model.confirmPassword, new { placeholder = "", style = "width: 700px" })
+                @Html.ValidationMessageFor(model => model.confirmPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.email, new { placeholder = "maxiM", style = "width: 700px" })
                 @Html.ValidationMessageFor(model => model.email)
             </div>
         </div>
@@ -68,7 +75,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.isAdmin, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.isAdmin)
+                @Html.CheckBoxFor(model => model.isAdmin, new { placeholder = "maxiM", style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.isAdmin)
             </div>
         </div>

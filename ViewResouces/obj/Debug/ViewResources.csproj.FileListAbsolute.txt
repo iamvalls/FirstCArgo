@@ -57,3 +57,13 @@ C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewRe
 C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.dll
 C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.pdb
 C:\Users\i0061.OXANDO\documents\visual studio 2013\Projects\FirstCargoApp\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\bin\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\bin\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\bin\Debug\de\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.Resource.resources
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.Resource.de.resources
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.csproj.GenerateResource.Cache
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\de\ViewResources.resources.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.dll
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.pdb
+C:\Users\i0061.OXANDO\Documents\GitHub\FirstCArgo\ViewResouces\obj\Debug\ViewResources.csprojResolveAssemblyReference.cache
