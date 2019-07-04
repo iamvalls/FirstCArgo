@@ -498,4 +498,10 @@
   <data name="taxNumber" xml:space="preserve">
     <value>Steuernummer</value>
   </data>
+  <data name="TotalEntries" xml:space="preserve">
+    <value>Gesamt Einnahmen</value>
+  </data>
+  <data name="VehiculeEntriesFrom" xml:space="preserve">
+    <value>Einnahmen von</value>
+  </data>
 </root>

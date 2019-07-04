@@ -21,6 +21,7 @@ namespace FirstCargoApp.Controllers
     {
         private FirstCargoDbEntities db = new FirstCargoDbEntities();
         private static List<Package> packages = new List<Package>();
+        private static List<Vehicule> vehicules = new List<Vehicule>();
 
         // GET: /Package/
         public async Task<ActionResult> Index(NotificationMessage.ManageMessageId? message, string sortOrder, string currentFilter, string searchString, 
@@ -36,6 +37,7 @@ namespace FirstCargoApp.Controllers
 
             ViewBag.ReturnUrl = Url.Action("Package");
              packages = await db.Package.ToListAsync();
+             vehicules = await db.Vehicule.ToListAsync();
 
             int id = Int32.Parse(User.Identity.GetUserName().Split('|')[1]);
             // Get Entry for a specific User
@@ -44,8 +46,8 @@ namespace FirstCargoApp.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                packages = packages.Where(s => s.senderName.Contains(searchString)
-                                       || s.recieverName.Contains(searchString)).ToList();
+                packages = packages.Where(s => s.senderName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.recieverName.ToUpper().Contains(searchString.ToUpper())).ToList();
             }
             else if (!String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(endDate))
             {
@@ -368,7 +370,7 @@ namespace FirstCargoApp.Controllers
                 else
                 {
                     ReportManager report = new ReportManager();
-                    //report.generateListOfOrderWithPreis(packages);
+                    report.generateListOfPackageWithPreis(packages);
                 }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)

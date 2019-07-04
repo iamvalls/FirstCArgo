@@ -47,8 +47,8 @@ namespace FirstCargoApp.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                others = others.Where(s => s.senderName.Contains(searchString)
-                                       || s.recieverName.Contains(searchString)).ToList();
+                others = others.Where(s => s.senderName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.recieverName.ToUpper().Contains(searchString.ToUpper())).ToList();
             }
             else if (!String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(endDate))
             {
@@ -406,7 +406,7 @@ namespace FirstCargoApp.Controllers
                 else
                 {
                     ReportManager report = new ReportManager();
-                    //report.generateListOfOrderWithPreis(others);
+                    report.generateListOfOtherWithPreis(others);
                 }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)

@@ -1096,6 +1096,15 @@ namespace ViewResources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total Entries ähnelt.
+        /// </summary>
+        public static string TotalEntries {
+            get {
+                return ResourceManager.GetString("TotalEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die First Name ähnelt.
         /// </summary>
         public static string UserFirstName {
@@ -1137,6 +1146,15 @@ namespace ViewResources {
         public static string Vehicule {
             get {
                 return ResourceManager.GetString("Vehicule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Entries from ähnelt.
+        /// </summary>
+        public static string VehiculeEntriesFrom {
+            get {
+                return ResourceManager.GetString("VehiculeEntriesFrom", resourceCulture);
             }
         }
         

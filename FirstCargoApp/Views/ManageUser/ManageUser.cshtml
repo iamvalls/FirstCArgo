@@ -14,11 +14,12 @@
         
         @if (Convert.ToBoolean((User.Identity.GetUserName().Split('|')[2])))
         {
-            <section id="externalLogins">
             
-                @Html.ActionLink("User List" + " " + "!", "Index", "ManageUser", routeValues: null, htmlAttributes: new { title = "Verwalten" })
+             <section id="externalLogins">
+            
+                    @Html.ActionLink("User List" + " " + "!", "Index", "ManageUser", routeValues: null, htmlAttributes: new { title = "Verwalten" })
            
-        </section>   
+            </section>   
         }
         
      
